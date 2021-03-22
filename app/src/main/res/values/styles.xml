@@ -1,0 +1,28 @@
+<resources>
+
+    <!--
+        O arquivo styles.xml deve conter apenas definições para componentes (widgets)
+        somente. Nenhum atributo de texto deve ser incluido nesse arquivo.
+    -->
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="strokeColor">?attr/colorSecondary</item>
+        <item name="rippleColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton">
+        <item name="cornerRadius">8dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="rippleColor">?attr/colorSecondary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+</resources>

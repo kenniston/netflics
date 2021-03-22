@@ -1,0 +1,81 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        Temas são como interfaces para implementar estilos nos aplicativos.
+        Cada atributo deve ser "implementado" por alguma cor o "sub" estilo.
+
+        Use nomes consistentes para definir elementos de estilos seguindo a
+        regra abaixo:
+
+            Tipos: Theme, Widget, Text, Styles, TextAppearence, Shape, etc;
+            Grupo: AppName, IESBLight, ModuleName, etc;
+            Subgrupo: Grupo de componentes como Widget, Toolbar, Button, etc;
+            Variante: Variante de cores: Blue, Green, Dark, Light, etc;
+
+            Ex.:
+                Theme.IESBLight.Toolbar.DarkRed
+                Theme.IESBLight.Toolbar.Red
+
+                Widget.IESBLight.Button.DarkRed
+                Widget.IESBLight.Button.Red
+
+        Separe as informações em arquivos baseados na sua função:
+
+            1) themes.xml   => Arquivo para temas;
+            2) type.xml    => Arquivo para Aparência de texto, fonte, dimensões de texto, etc;
+            3) styles.xml   => Apenas componentes (Widgets);
+
+        Referências:
+
+            - https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+            - https://material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=ff0100&secondary.color=9f0000&primary.text.color=000000
+
+     -->
+
+    <style name="Theme.NetFlics" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--
+            Primary brand color.
+            A cor primária é a cor mais usada nas telas e nos componentes do aplicativo,
+            ou seja, a cor predominante.
+        -->
+        <item name="colorPrimary">@color/brand_light_gray</item>
+        <item name="colorPrimaryVariant">@color/brand_dark_gray_2</item>
+        <item name="colorOnPrimary">@color/brand_white</item>
+
+        <!--
+            Secondary brand color.
+            A cor secundária é a cor que apresenta destaque nas telas e nos componentes.
+            Geralmente é usada em botões flutuantes, Seleção de componentes como slides e switches,
+            barra de progresso, seleção de texto e links.
+        -->
+        <item name="colorSecondary">@color/brand_red</item>
+        <item name="colorSecondaryVariant">@color/brand_red</item>
+        <item name="colorOnSecondary">@color/brand_black</item>
+
+        <!--
+            Surface color são cores usadas em componentes como cards, menus e grades.
+        -->
+        <item name="colorSurface">@color/brand_white</item>
+        <item name="colorOnSurface">@color/brand_black</item>
+
+        <!--
+            Error color indica erro nos componentes como texto inválido em um campo de texto.
+        -->
+        <item name="colorError">@color/brand_dark_red_0</item>
+        <item name="colorOnError">@color/brand_white</item>
+
+        <!--
+            Background color é usada em componentes que rolagem como a ScrollView e Listas.
+        -->
+        <item name="backgroundColor">@color/brand_dark_gray_2</item>
+        <item name="colorOnBackground">@color/brand_white</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your theme here. -->
+        <item name="primaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton</item>
+        <item name="secondaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton</item>
+
+        <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button.BaseButton</item>
+    </style>
+</resources>

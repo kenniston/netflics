@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_dark_red_0">#870101</color>
+    <color name="brand_dark_red_1">#FF9F0000</color>
+    <color name="brand_dark_red_2">#C50101</color>
+    <color name="brand_red">#FFFF0100</color>
+    <color name="brand_light_red">#FF4C25</color>
+    <color name="brand_white">#FFFFFFFF</color>
+    <color name="brand_black">#FF000000</color>
+    <color name="brand_dark_gray_2">#2D2F31</color>
+    <color name="brand_dark_gray_1">#333333</color>
+    <color name="brand_dark_gray">#FF454545</color>
+    <color name="brand_light_gray">#FF606060</color>
+    <color name="brand_light_gray_1">#2B2B2B</color>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NetFlics</string>
+
+    <!-- Onboarding -->
+    <string name="start_button">Vamos lá</string>
+
+
+</resources>
