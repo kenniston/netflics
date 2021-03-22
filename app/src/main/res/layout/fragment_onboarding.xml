@@ -9,9 +9,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="?attr/backgroundColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/backgroundColor"
         tools:context=".OnboardingFragment">
 
         <androidx.viewpager2.widget.ViewPager2
@@ -19,11 +19,24 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/btStart"
+            app:layout_constraintBottom_toTopOf="@+id/wormDotsIndicator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+            android:id="@+id/wormDotsIndicator"
+            style="?attr/viewPagerDotsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btStart"

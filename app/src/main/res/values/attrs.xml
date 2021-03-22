@@ -2,4 +2,5 @@
 <resources>
     <attr format="reference" name="primaryButtonStyle"/>
     <attr format="reference" name="secondaryButtonStyle"/>
+    <attr format="reference" name="viewPagerDotsStyle"/>
 </resources>

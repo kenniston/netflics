@@ -48,7 +48,7 @@
             barra de progresso, seleção de texto e links.
         -->
         <item name="colorSecondary">@color/brand_red</item>
-        <item name="colorSecondaryVariant">@color/brand_red</item>
+        <item name="colorSecondaryVariant">@color/brand_dark_red_0</item>
         <item name="colorOnSecondary">@color/brand_black</item>
 
         <!--
@@ -75,7 +75,7 @@
         <!-- Customize your theme here. -->
         <item name="primaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton</item>
         <item name="secondaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton</item>
-
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button.BaseButton</item>
+        <item name="viewPagerDotsStyle">@style/Widget.ViewPageIndicator</item>
     </style>
 </resources>

@@ -6,7 +6,7 @@
     -->
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton">
-        <item name="cornerRadius">8dp</item>
+        <item name="cornerRadius">2dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
@@ -16,13 +16,22 @@
     </style>
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton">
-        <item name="cornerRadius">8dp</item>
+        <item name="cornerRadius">2dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
         <item name="strokeColor">?attr/colorPrimary</item>
         <item name="rippleColor">?attr/colorSecondary</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.ViewPageIndicator" parent="android:Widget">
+        <item name="dotsColor">?attr/colorSecondary</item>
+        <item name="dotsStrokeColor">?attr/colorSecondaryVariant</item>
+        <item name="dotsStrokeWidth">2dp</item>
+        <item name="dotsCornerRadius">8dp</item>
+        <item name="dotsSize">8dp</item>
+        <item name="dotsSpacing">4dp</item>
     </style>
 
 </resources>

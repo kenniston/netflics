@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.iesb.mobile.netflics.databinding.FragmentOnboardingBinding
+import br.iesb.mobile.netflics.ui.adapter.OnboardingAdapter
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingFirstScreenFragment
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingSecondScreenFragment
+import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingThirdScreenFragment
 
 class OnboardingFragment : Fragment() {
 
@@ -20,14 +24,25 @@ class OnboardingFragment : Fragment() {
         binding.fragment = this
         binding.lifecycleOwner = this
 
+        val pages = arrayListOf(
+            OnboardingFirstScreenFragment(),
+            OnboardingSecondScreenFragment(),
+            OnboardingThirdScreenFragment()
+        )
+
+        binding.vpOnboarding.adapter = OnboardingAdapter(
+            pages,
+            requireActivity().supportFragmentManager,
+            lifecycle
+        )
+
+        binding.wormDotsIndicator.setViewPager2(binding.vpOnboarding)
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    fun start() {
+    @SuppressWarnings
+    fun start(v: View) {
 
     }
 
