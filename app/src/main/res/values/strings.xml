@@ -5,6 +5,8 @@
     <string name="start_button">Vamos lá</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onboarding_first_page_subtitle">Assista onde quiser. Cancele quando quiser</string>
+    <string name="onboarding_first_page_title">Filmes, séries e muito mais, sem limites</string>
 
 
 </resources>

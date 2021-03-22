@@ -48,7 +48,7 @@
             barra de progresso, seleção de texto e links.
         -->
         <item name="colorSecondary">@color/brand_red</item>
-        <item name="colorSecondaryVariant">@color/brand_red</item>
+        <item name="colorSecondaryVariant">@color/brand_dark_red_0</item>
         <item name="colorOnSecondary">@color/brand_black</item>
 
         <!--
@@ -72,10 +72,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
+        <!-- Text Appearance -->
+        <item name="textAppearanceBody1">@style/TextAppearance.App.Body1</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.App.Headline1</item>
+
         <!-- Customize your theme here. -->
         <item name="primaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton</item>
         <item name="secondaryButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton</item>
-
         <item name="textAppearanceButton">@style/TextAppearance.MaterialComponents.Button.BaseButton</item>
+        <item name="viewPagerDotsStyle">@style/Widget.ViewPageIndicator</item>
+        <item name="gradientBackground">@drawable/gradient_black</item>
+        <item name="subtitleStyle">@style/Widget.SubTitle</item>
+        <item name="titleStyle">@style/Widget.Title</item>
     </style>
 </resources>

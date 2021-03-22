@@ -34,4 +34,14 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
+    <style name="Widget.SubTitle" parent="android:Widget">
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="Widget.Title" parent="android:Widget">
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textAppearance">?attr/textAppearanceHeadline1</item>
+    </style>
+
 </resources>

@@ -3,4 +3,7 @@
     <attr format="reference" name="primaryButtonStyle"/>
     <attr format="reference" name="secondaryButtonStyle"/>
     <attr format="reference" name="viewPagerDotsStyle"/>
+    <attr format="reference" name="gradientBackground"/>
+    <attr format="reference" name="subtitleStyle"/>
+    <attr format="reference" name="titleStyle"/>
 </resources>

@@ -12,21 +12,56 @@
         android:background="?attr/backgroundColor"
         tools:context=".ui.fragment.onboarding.screen.OnboardingFirstScreenFragment">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/ivOnboardingFirst"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="Primeiro"
-            android:textAlignment="center"
-            android:textColor="@color/brand_white"
-            android:textSize="36sp"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/onboarding1" />
+
+        <View
+            android:id="@+id/vwGradient"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:background="?gradientBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            style="?subtitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:elevation="5dp"
+            android:text="@string/onboarding_first_page_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitleFirstPage"
+            style="?titleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:elevation="5dp"
+            android:lines="2"
+            android:text="@string/onboarding_first_page_title"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
