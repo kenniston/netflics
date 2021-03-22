@@ -7,8 +7,8 @@
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.PrimaryButton">
         <item name="cornerRadius">2dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="backgroundTint">?attr/colorSecondary</item>
         <item name="strokeColor">?attr/colorSecondary</item>
@@ -17,8 +17,8 @@
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.SecondaryButton">
         <item name="cornerRadius">2dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
         <item name="strokeColor">?attr/colorPrimary</item>
         <item name="rippleColor">?attr/colorSecondary</item>
@@ -34,9 +34,19 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
-    <style name="Widget.SubTitle" parent="android:Widget">
+    <style name="Widget.Body1" parent="android:Widget">
         <item name="android:textColor">?attr/colorSurface</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
+    </style>
+
+    <style name="Widget.Body2" parent="android:Widget">
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="Widget.SubTitle1" parent="android:Widget">
+        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
     </style>
 
     <style name="Widget.Title" parent="android:Widget">
