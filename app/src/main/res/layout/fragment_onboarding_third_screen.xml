@@ -12,22 +12,55 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragment.onboarding.screen.OnboardingThirdScreenFragment">
 
-
-        <TextView
-            android:id="@+id/textView3"
+        <View
+            android:id="@+id/vwGradient3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="Terceiro"
-            android:textAlignment="center"
-            android:textColor="@color/brand_white"
-            android:textSize="36sp"
+            android:layout_height="500dp"
+            android:background="?gradientBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitleThirdPage"
+            style="?titleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:elevation="5dp"
+            android:lines="2"
+            android:text="@string/onboarding_second_page_title"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/tvSubtitleThirdPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSubtitleThirdPage"
+            style="?subtitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:elevation="5dp"
+            android:text="@string/onboarding_second_page_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/tvTitleThirdPage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/onboarding3" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

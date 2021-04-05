@@ -3,10 +3,15 @@
 
     <!-- Onboarding -->
     <string name="start_button">Vamos lá</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="onboarding_first_page_subtitle">Assista onde quiser. Cancele quando quiser</string>
     <string name="onboarding_first_page_title">Filmes, séries e muito mais, sem limites</string>
+    <string name="onboarding_first_page_subtitle">Assista onde quiser. Cancele quando quiser</string>
+
+    <string name="onboarding_second_page_title">Baixe e assista offline</string>
+    <string name="onboarding_second_page_subtitle">Tenha sempre algo para assistir offline.</string>
+
+    <string name="onboarding_third_page_title">Sem compromisso</string>
+    <string name="onboarding_third_page_subtitle">Assine hoje, cancele quando quiser.</string>
+
     <string name="onboarding_privacy">Privacidade</string>
     <string name="onboarding_faq">Perguntas Frequentes</string>
 
