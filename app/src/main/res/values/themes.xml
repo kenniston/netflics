@@ -54,8 +54,8 @@
         <!--
             Surface color são cores usadas em componentes como cards, menus e grades.
         -->
-        <item name="colorSurface">@color/brand_white</item>
-        <item name="colorOnSurface">@color/brand_black</item>
+        <item name="colorSurface">@color/brand_light_gray</item>
+        <item name="colorOnSurface">@color/brand_white</item>
 
         <!--
             Error color indica erro nos componentes como texto inválido em um campo de texto.
@@ -88,5 +88,8 @@
         <item name="titleStyle">@style/Widget.Title</item>
         <item name="body1Style">@style/Widget.Body1</item>
         <item name="body2Style">@style/Widget.Body2</item>
+        <item name="editTextLayoutStyle">@style/Widget.EditTextLayout</item>
+        <item name="layoutEditTextStyle">@style/Widget.EditText</item>
+
     </style>
 </resources>

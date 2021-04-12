@@ -34,23 +34,37 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
+    <style name="Widget.EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="passwordToggleTint">?attr/colorOnPrimary</item>
+        <item name="errorTextColor">?attr/colorSecondary</item>
+        <item name="boxStrokeColor">?attr/colorOnPrimary</item>
+        <item name="hintTextColor">?attr/colorOnPrimary</item>
+        <item name="boxBackgroundColor">?attr/colorOnPrimary</item>
+        <item name="placeholderTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Widget.EditText" parent="">
+        <item name="android:background">?attr/backgroundColor</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
     <style name="Widget.Body1" parent="android:Widget">
-        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
     <style name="Widget.Body2" parent="android:Widget">
-        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAppearance">?attr/textAppearanceBody2</item>
     </style>
 
     <style name="Widget.SubTitle1" parent="android:Widget">
-        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
     </style>
 
     <style name="Widget.Title" parent="android:Widget">
-        <item name="android:textColor">?attr/colorSurface</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="android:textAppearance">?attr/textAppearanceHeadline1</item>
     </style>
 

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">NetFlics</string>
+    <string name="email_hint">E-mail</string>
+    <string name="back">Voltar</string>
+    <string name="send">enviar</string>
+    <string name="password_hint">Senha</string>
+    <string name="password_check_hint">Repetir a Senha</string>
 
     <!-- Onboarding -->
     <string name="start_button">Vamos lá</string>
@@ -16,5 +21,22 @@
     <string name="onboarding_faq">Perguntas Frequentes</string>
 
     <!-- Login -->
+    <string name="login_success">Login efetuado com sucesso!</string>
+    <string name="email_required">E-mail obrigatório!</string>
+    <string name="invalid_email">E-mail inválido!</string>
+    <string name="password_required">Password obrigatório!</string>
+    <string name="password_minimum_length">A senha deve ter 6 caracteres no mínimo.</string>
+    <string name="password_invalid_check">A senha e a confirmação de senha devem ser iguais.</string>
+    <string name="login_with_google">Entrar com Google</string>
+    <string name="login">Entrar</string>
+    <string name="login_to_signup">Não tem conta? Cadastre-se aqui!</string>
+    <string name="login_to_forgot_password">Esqueceu a senha? Clique aqui!</string>
+
+    <!-- SignUp -->
+    <string name="signup">Cadastrar</string>
+
+    <!-- Forgot Password -->
+    <string name="forgot_text">Informe o seu e-mail de cadastro no campo abaixo e então pressione o botão enviar. Um e-mail será enviado para redefinir sua senha. Verifique sua caixa de Spam caso o e-mail não chegue na sua caixa de entrada.</string>
+
 
 </resources>

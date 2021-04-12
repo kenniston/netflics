@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentOnboardingBinding
 import br.iesb.mobile.netflics.ui.adapter.OnboardingAdapter
 import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingFirstScreenFragment
@@ -43,7 +45,7 @@ class OnboardingFragment : Fragment() {
 
     @SuppressWarnings
     fun start(v: View) {
-
+        findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
     }
 
 }

@@ -8,4 +8,6 @@
     <attr format="reference" name="body1Style"/>
     <attr format="reference" name="body2Style"/>
     <attr format="reference" name="titleStyle"/>
+    <attr format="reference" name="editTextLayoutStyle"/>
+    <attr format="reference" name="layoutEditTextStyle"/>
 </resources>

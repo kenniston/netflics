@@ -26,7 +26,7 @@ class SplashScreenFragment : Fragment() {
         binding.lifecycleOwner = this
 
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(4000)
+            delay(2500)
             findNavController().navigate(R.id.action_splashScreenFragment_to_onboardingFragment)
         }
 

@@ -20,6 +20,32 @@
         android:id="@+id/onboardingFragment"
         android:name="br.iesb.mobile.netflics.ui.fragment.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_onboarding" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.login.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        tools:layout="@layout/fragment_forgot_password"/>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.login.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup"/>
 
 </navigation>
