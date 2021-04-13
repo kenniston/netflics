@@ -23,7 +23,9 @@
         tools:layout="@layout/fragment_onboarding" >
         <action
             android:id="@+id/action_onboardingFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -32,10 +34,19 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
-            app:destination="@id/forgotPasswordFragment" />
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
@@ -47,5 +58,10 @@
         android:name="br.iesb.mobile.netflics.ui.fragment.login.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_signup"/>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="br.iesb.mobile.netflics.ui.activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 
 </navigation>

@@ -6,6 +6,10 @@
         <variable
             name="fragment"
             type="br.iesb.mobile.netflics.ui.fragment.login.LoginFragment" />
+
+        <variable
+            name="viewmodel"
+            type="br.iesb.mobile.netflics.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/email_hint"
+                android:text="@={viewmodel.email}"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -79,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/password_hint"
+                android:text="@={viewmodel.password}"
                 android:inputType="numberPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -92,6 +98,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
             android:text="@string/login"
+            android:onClick="@{() -> fragment.login()}"
             app:layout_constraintBottom_toTopOf="@+id/btLoginWithGoogle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -106,7 +113,7 @@
             android:layout_marginBottom="32dp"
             android:drawableLeft="@drawable/ic_google_icon"
             android:text="@string/login_with_google"
-            android:onClick="@{fragment::loginWithGoogle}"
+            android:onClick="@{() -> fragment.loginWithGoogle()}"
             app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -123,7 +130,7 @@
             android:text="@string/login_to_signup"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:onClick="@{fragment::signup}"
+            android:onClick="@{() -> fragment.signup()}"
             app:layout_constraintBottom_toTopOf="@+id/tvForgotPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -139,7 +146,7 @@
             android:text="@string/login_to_forgot_password"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:onClick="@{fragment::forgot}"
+            android:onClick="@{() -> fragment.forgot()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
