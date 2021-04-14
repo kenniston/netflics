@@ -34,9 +34,11 @@
 
     <!-- SignUp -->
     <string name="signup">Cadastrar</string>
+    <string name="signup_successfully">Cadastro efetuado com sucesso!</string>
 
     <!-- Forgot Password -->
     <string name="forgot_text">Informe o seu e-mail de cadastro no campo abaixo e então pressione o botão enviar. Um e-mail será enviado para redefinir sua senha. Verifique sua caixa de Spam caso o e-mail não chegue na sua caixa de entrada.</string>
+    <string name="reset_password_email_sent">E-mail enviado com sucesso!</string>
 
 
 </resources>
