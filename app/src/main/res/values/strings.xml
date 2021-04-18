@@ -40,5 +40,7 @@
     <string name="forgot_text">Informe o seu e-mail de cadastro no campo abaixo e então pressione o botão enviar. Um e-mail será enviado para redefinir sua senha. Verifique sua caixa de Spam caso o e-mail não chegue na sua caixa de entrada.</string>
     <string name="reset_password_email_sent">E-mail enviado com sucesso!</string>
 
+    <!-- Profile and Select Profile -->
+    <string name="who_is_watching">Quem está assistindo?</string>
 
 </resources>

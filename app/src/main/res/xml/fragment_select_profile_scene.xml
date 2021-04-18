@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="2000">
+        <KeyFrameSet >
+
+            <KeyPosition
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="10"
+                motion:keyPositionType="parentRelative"
+                motion:percentY="0.5"/>
+            <KeyPosition
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="60"
+                motion:keyPositionType="parentRelative"
+                motion:percentY="0.5" />
+
+            <KeyAttribute
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="11"
+                android:rotation="0" />
+            <KeyAttribute
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="60"
+                android:rotation="360" />
+            <KeyAttribute
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="100"
+                android:rotation="360" />
+
+            <KeyAttribute
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="85"
+                android:scaleX="1.2"
+                android:scaleY="1.2"/>
+            <KeyAttribute
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="60"
+                android:scaleX="1.0"
+                android:scaleY="1.0"/>
+            <KeyPosition
+                motion:motionTarget="@+id/tvSelectProfileTitle"
+                motion:framePosition="17"
+                motion:keyPositionType="pathRelative"
+                motion:percentY="0.5" />
+
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/tvSelectProfileTitle"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"
+            android:translationY="-100dp" />
+        <Constraint
+            android:id="@+id/button3"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"
+            motion:layout_constraintHorizontal_bias="0.498"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:translationY="100dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end"></ConstraintSet>
+</MotionScene>
