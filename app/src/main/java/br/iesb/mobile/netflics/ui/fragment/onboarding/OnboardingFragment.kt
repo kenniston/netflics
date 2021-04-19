@@ -43,7 +43,7 @@ class OnboardingFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressWarnings
+    @Suppress("UNUSED_PARAMETER")
     fun start(v: View) {
         findNavController().navigate(R.id.action_onboardingFragment_to_loginFragment)
     }
