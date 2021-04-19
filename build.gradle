@@ -1,7 +1,7 @@
 buildscript {
     ext {
-        kotlin_version = "1.4.31"
-        hiltVersion = "2.31-alpha"
+        kotlin_version = "1.4.32"
+        hiltVersion = "2.33-beta"
         hiltAndroidXVersion = '1.0.0-alpha03'
     }
 

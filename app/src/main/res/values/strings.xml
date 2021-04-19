@@ -32,6 +32,12 @@
     <string name="login_to_signup">Não tem conta? Cadastre-se aqui!</string>
     <string name="login_to_forgot_password">Esqueceu a senha? Clique aqui!</string>
 
+    <!-- Login (Firebase Errors) -->
+    <string name="login_invalid_credentials">Usuário ou senha inválidos.</string>
+    <string name="login_user_disabled">Conta de usuário desabilitada.</string>
+    <string name="login_user_not_found">Conta não encontrada para o e-mail informado.</string>
+    <string name="login_generic_error">Não foi possível efetuar login. Por favor verifique os dados</string>
+
     <!-- SignUp -->
     <string name="signup">Cadastrar</string>
     <string name="signup_successfully">Cadastro efetuado com sucesso!</string>
