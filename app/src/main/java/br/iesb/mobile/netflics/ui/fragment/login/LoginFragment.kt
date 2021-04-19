@@ -31,6 +31,15 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val viewmodel: LoginViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (auth.currentUser != null) {
+            requireActivity().finish()
+            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -6,7 +6,9 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="2000">
+        motion:duration="2000"
+        motion:autoTransition="animateToEnd"
+        motion:motionInterpolator="easeOut">
         <KeyFrameSet >
 
             <KeyPosition
