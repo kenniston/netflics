@@ -32,16 +32,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button3"
+        <ImageView
+            android:tag="Profile1"
+            android:onClick="@{ fragment::createOrSelectProfile }"
+            android:id="@+id/ivProfile1"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:srcCompat="@drawable/ic_account"
+            app:tint="?colorOnPrimary" />
+
+        <ImageView
+            android:tag="Profile2"
+            android:onClick="@{ fragment::createOrSelectProfile }"
+            android:id="@+id/ivProfile2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintStart_toEndOf="@+id/guideline2"
+            app:srcCompat="@drawable/ic_account"
+            app:tint="?colorOnPrimary" />
+
+        <ImageView
+            android:tag="Profile3"
+            android:onClick="@{ fragment::createOrSelectProfile }"
+            android:id="@+id/ivProfile3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline4"
+            app:srcCompat="@drawable/ic_account"
+            app:tint="?colorOnPrimary" />
+
+        <ImageView
+            android:tag="Profile4"
+            android:onClick="@{ fragment::createOrSelectProfile }"
+            android:id="@+id/ivProfile4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="fitXY"
+            app:layout_constraintStart_toEndOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline4"
+            app:srcCompat="@drawable/ic_account"
+            app:tint="?colorOnPrimary" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

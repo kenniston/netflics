@@ -3,7 +3,7 @@ package br.iesb.mobile.netflics.interactor
 import android.app.Application
 import android.util.Patterns
 import br.iesb.mobile.netflics.R
-import br.iesb.mobile.netflics.domain.LoginResult
+import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.repository.LoginRepository
 import javax.inject.Inject
 
@@ -33,22 +33,22 @@ class LoginInteractor @Inject constructor(
     }
 
 
-    suspend fun login(email: String?, password: String?): LoginResult<Nothing> {
+    suspend fun login(email: String?, password: String?): AppResult<Nothing> {
         val (credential, ex) = validadeEmailAndPassword(email, password)
         return when (ex) {
             null -> repo.login(credential!!.first, credential.second)
-            else -> LoginResult.Error(ex.localizedMessage, ex)
+            else -> AppResult.Error(ex.localizedMessage, ex)
         }
     }
 
-    suspend fun signup(email: String?, password: String?): LoginResult<Nothing> {
+    suspend fun signup(email: String?, password: String?): AppResult<Nothing> {
         val (credential, ex) = validadeEmailAndPassword(email, password)
         return when (ex) {
             null -> repo.signup(credential!!.first, credential.second)
-            else -> LoginResult.Error(ex.localizedMessage, ex)
+            else -> AppResult.Error(ex.localizedMessage, ex)
         }    }
 
-    suspend fun forgot(email: String?): LoginResult<Nothing> {
+    suspend fun forgot(email: String?): AppResult<Nothing> {
         if (email.isNullOrBlank()) {
             throw Exception(app.getString(R.string.email_required))
         }

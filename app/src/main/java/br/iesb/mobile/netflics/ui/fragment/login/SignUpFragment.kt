@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentSignupBinding
-import br.iesb.mobile.netflics.domain.LoginResult
+import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
 
 class SignUpFragment : Fragment() {
@@ -36,11 +35,11 @@ class SignUpFragment : Fragment() {
 
         viewmodel.result.observe(viewLifecycleOwner) {
             when (it) {
-                is LoginResult.Success -> {
+                is AppResult.Success -> {
                     requireActivity().finish()
                     Toast.makeText(context, getText(R.string.signup_successfully), Toast.LENGTH_LONG).show()
                 }
-                is LoginResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+                is AppResult.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
             }
         }
 
