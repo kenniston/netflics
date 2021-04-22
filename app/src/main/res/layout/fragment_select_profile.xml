@@ -117,11 +117,12 @@
             app:profileCounterStrokeColor="#F37A7A"
             app:profileCounterStrokeWidth="1.2"
             app:profileCounterTextColor="#ffffff"
-            app:profileEndColor="#44FF0000"
-            app:profileCenterColor="#303030"
+            app:profileEndColor="#44090909"
+            app:profileCenterColor="#FB2C2C"
             app:profileStartColor="#000000"
-            app:profileName="Teste"
-            app:profilePlaceholder="@drawable/ic_google_icon" />
+            app:profileName="Kenniston"
+            app:profileNameColor="#ffffff"
+            app:profilePlaceholder="@drawable/kenniston" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

@@ -5,6 +5,8 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.text.TextPaint
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.withStyledAttributes
@@ -45,7 +47,7 @@ class AnimatedProfile @JvmOverloads constructor(
         context.withStyledAttributes(attrs, R.styleable.AnimatedProfile) {
             // Profile Name Attributes
             profileName = getString(R.styleable.AnimatedProfile_profileName)
-            profileNameColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
+            profileNameColor = getColor(R.styleable.AnimatedProfile_profileNameColor,
                 Color.BLACK)
 
             // Image and Placeholder Attributes
@@ -54,10 +56,14 @@ class AnimatedProfile @JvmOverloads constructor(
 
             // Counter Attributes
             profileCounter = getInt(R.styleable.AnimatedProfile_profileCounter, 0)
-            profileCounterColor = getColor(R.styleable.AnimatedProfile_profileCounterColor, Color.BLACK)
-            profileCounterStrokeColor = getColor(R.styleable.AnimatedProfile_profileCounterStrokeColor, Color.BLACK)
-            profileCounterTextColor = getColor(R.styleable.AnimatedProfile_profileCounterTextColor, Color.BLACK)
-            profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth, 3f)
+            profileCounterColor = getColor(R.styleable.AnimatedProfile_profileCounterColor,
+                Color.BLACK)
+            profileCounterStrokeColor = getColor(R.styleable.AnimatedProfile_profileCounterStrokeColor,
+                Color.BLACK)
+            profileCounterTextColor = getColor(R.styleable.AnimatedProfile_profileCounterTextColor,
+                Color.BLACK)
+            profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth,
+                3f)
 
             // Profile Gradient Attributes
             profileStartColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
@@ -83,6 +89,7 @@ class AnimatedProfile @JvmOverloads constructor(
         drawGradientBackground(canvas)
         drawProfileImage(canvas)
         drawCounter(canvas)
+        drawName(canvas)
     }
 
     private fun drawGradientBackground(canvas: Canvas) {
@@ -125,6 +132,30 @@ class AnimatedProfile @JvmOverloads constructor(
         canvas.drawText(str, x, yt, p)
     }
 
+    private fun drawProfileImage(canvas: Canvas) {
+        val img = (if (profileImage != null) profileImage else profilePlaceholder) ?: return
+        val b = img.toBitmap(width - IMAGE_MARGIN * 2, height - IMAGE_MARGIN * 2)
+
+        canvas.drawBitmap(b, IMAGE_MARGIN.toFloat(), IMAGE_MARGIN.div(2).toFloat(), Paint())
+    }
+
+    private fun drawName(canvas: Canvas) {
+        val textPaint = TextPaint()
+        textPaint.color = profileNameColor
+        textPaint.style = Paint.Style.FILL
+        textPaint.isAntiAlias = true
+        textPaint.textSize = 42f
+        textPaint.textAlign = Paint.Align.CENTER
+        textPaint.isLinearText = true
+        textPaint.isFakeBoldText = true
+
+        val str = TextUtils.ellipsize(profileName, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
+
+        val x = width.div(2)
+        val y = height - IMAGE_MARGIN.div(2)
+        canvas.drawText(str, 0, str.length, x.toFloat(), y.toFloat(), textPaint)
+    }
+
     private fun setTextSizeForWidth(paint: Paint, desiredWidth: Float, text: String) {
         val testTextSize = 96f
         paint.textSize = testTextSize
@@ -132,13 +163,6 @@ class AnimatedProfile @JvmOverloads constructor(
         paint.getTextBounds(text, 0, text.length, bounds)
         val desiredTextSize = testTextSize * desiredWidth / bounds.width()
         paint.textSize = desiredTextSize
-    }
-
-    private fun drawProfileImage(canvas: Canvas) {
-        val img = (if (profileImage != null) profileImage else profilePlaceholder) ?: return
-        val b = img.toBitmap(width - IMAGE_MARGIN * 2, height - IMAGE_MARGIN * 2)
-
-        canvas.drawBitmap(b, IMAGE_MARGIN.toFloat(), IMAGE_MARGIN.div(2).toFloat(), Paint())
     }
 
     fun setProfileImage(bmp: Bitmap) {
