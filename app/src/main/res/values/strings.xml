@@ -48,5 +48,6 @@
 
     <!-- Profile and Select Profile -->
     <string name="who_is_watching">Quem está assistindo?</string>
+    <string name="new_profile">Novo</string>
 
 </resources>

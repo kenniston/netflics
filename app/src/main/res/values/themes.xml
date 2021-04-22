@@ -90,6 +90,8 @@
         <item name="body2Style">@style/Widget.Body2</item>
         <item name="editTextLayoutStyle">@style/Widget.EditTextLayout</item>
         <item name="layoutEditTextStyle">@style/Widget.EditText</item>
+        <item name="profileStyle">@style/Widget.AnimatedProfile</item>
 
     </style>
+
 </resources>

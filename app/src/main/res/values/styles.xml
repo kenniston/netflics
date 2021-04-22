@@ -34,6 +34,21 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
+    <style name="Widget.AnimatedProfile" parent="android:Widget">
+        <item name="profileBorderColor">?attr/colorPrimary</item>
+        <item name="profileBorderWidth">8</item>
+        <item name="profileCounterColor">?attr/colorSecondaryVariant</item>
+        <item name="profileCounterStrokeColor">?attr/colorSecondary</item>
+        <item name="profileCounterTextColor">?attr/colorOnPrimary</item>
+        <item name="profileCounterStrokeWidth">1.2</item>
+        <item name="profileNameColor">?attr/colorOnPrimary</item>
+        <item name="profileStartColor">?attr/colorPrimaryVariant</item>
+        <item name="profileCenterColor">?attr/colorPrimary</item>
+        <item name="profileEndColor">?attr/colorPrimaryVariant</item>
+        <item name="profilePlaceholder">@drawable/ic_account</item>
+        <item name="profileNameTextSize">32</item>
+    </style>
+
     <style name="Widget.EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="passwordToggleTint">?attr/colorOnPrimary</item>
         <item name="errorTextColor">?attr/colorSecondary</item>

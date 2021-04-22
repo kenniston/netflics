@@ -18,20 +18,23 @@ class AnimatedProfile @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
 ) : View(context, attrs, defStyleAttr) {
 
-    val COUNTER_RADIUS: Float = 27f
-    val IMAGE_MARGIN: Int = 50
+    private val COUNTER_RADIUS: Float = 27f
+    private val IMAGE_MARGIN: Int = 50
 
     var profileName: String? = null
     var profileNameColor: Int = Color.BLACK
+    var profileNameStroke: Boolean = false
+    var profileNameStrokeColor: Int = Color.WHITE
+    var profileNameTextSize: Float = 42f
 
     var profileImage: Drawable? = null
     var profilePlaceholder: Drawable? = null
 
     var profileCounter: Int = 0
-    var profileCounterColor : Int = Color.LTGRAY
+    var profileCounterColor : Int = Color.GRAY
     var profileCounterStrokeColor: Int = Color.DKGRAY
-    var profileCounterTextColor: Int = Color.BLACK
-    var profileCounterStrokeWidth: Float = 3f
+    var profileCounterTextColor: Int = Color.WHITE
+    var profileCounterStrokeWidth: Float = 1.2f
 
     var profileStartColor: Int = Color.TRANSPARENT
     var profileCenterColor: Int = Color.TRANSPARENT
@@ -49,6 +52,10 @@ class AnimatedProfile @JvmOverloads constructor(
             profileName = getString(R.styleable.AnimatedProfile_profileName)
             profileNameColor = getColor(R.styleable.AnimatedProfile_profileNameColor,
                 Color.BLACK)
+            profileNameStroke = getBoolean(R.styleable.AnimatedProfile_profileNameStroke, false)
+            profileNameStrokeColor = getColor(R.styleable.AnimatedProfile_profileNameStrokeColor,
+                Color.WHITE)
+            profileNameTextSize = getFloat(R.styleable.AnimatedProfile_profileNameTextSize, 42f)
 
             // Image and Placeholder Attributes
             profileImage = getDrawable(R.styleable.AnimatedProfile_profileImage)
@@ -57,13 +64,13 @@ class AnimatedProfile @JvmOverloads constructor(
             // Counter Attributes
             profileCounter = getInt(R.styleable.AnimatedProfile_profileCounter, 0)
             profileCounterColor = getColor(R.styleable.AnimatedProfile_profileCounterColor,
-                Color.BLACK)
+                Color.GRAY)
             profileCounterStrokeColor = getColor(R.styleable.AnimatedProfile_profileCounterStrokeColor,
-                Color.BLACK)
+                Color.DKGRAY)
             profileCounterTextColor = getColor(R.styleable.AnimatedProfile_profileCounterTextColor,
-                Color.BLACK)
+                Color.WHITE)
             profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth,
-                3f)
+                1.2f)
 
             // Profile Gradient Attributes
             profileStartColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
@@ -141,18 +148,28 @@ class AnimatedProfile @JvmOverloads constructor(
 
     private fun drawName(canvas: Canvas) {
         val textPaint = TextPaint()
-        textPaint.color = profileNameColor
-        textPaint.style = Paint.Style.FILL
         textPaint.isAntiAlias = true
-        textPaint.textSize = 42f
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.isLinearText = true
         textPaint.isFakeBoldText = true
+        textPaint.letterSpacing = 0.09f
+        textPaint.strokeWidth = 4.5f
+        textPaint.strokeJoin = Paint.Join.ROUND
+        textPaint.textSize = profileNameTextSize
 
         val str = TextUtils.ellipsize(profileName, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
 
         val x = width.div(2)
         val y = height - IMAGE_MARGIN.div(2)
+
+        if (profileNameStroke) {
+            textPaint.color = profileNameStrokeColor
+            textPaint.style = Paint.Style.STROKE
+            canvas.drawText(str, 0, str.length, x.toFloat(), y.toFloat(), textPaint)
+        }
+
+        textPaint.color = profileNameColor
+        textPaint.style = Paint.Style.FILL
         canvas.drawText(str, 0, str.length, x.toFloat(), y.toFloat(), textPaint)
     }
 

@@ -33,19 +33,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
-            app:profileBorderColor="#6E6E6E"
-            app:profileBorderWidth="8"
-            app:profileCounter="2"
-            app:profileCounterColor="#9E3232"
-            app:profileCounterStrokeColor="#F37A7A"
-            app:profileCounterStrokeWidth="1.2"
-            app:profileCounterTextColor="#ffffff"
-            app:profileEndColor="#44090909"
-            app:profileCenterColor="#FB2C2C"
-            app:profileStartColor="#000000"
-            app:profileName="Kenniston"
-            app:profileNameColor="#ffffff"
-            app:profilePlaceholder="@drawable/kenniston"
+            style="@style/Widget.AnimatedProfile"
+            app:profileName="@string/new_profile"
             android:tag="Profile1"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile1"
@@ -53,11 +42,12 @@
             android:layout_height="90dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
-        <ImageView
+        <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            style="@style/Widget.AnimatedProfile"
+            app:profileName="@string/new_profile"
             android:tag="Profile2"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile2"
@@ -65,13 +55,12 @@
             android:layout_height="90dp"
             android:layout_marginStart="32dp"
             android:layout_marginBottom="32dp"
-            android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintStart_toEndOf="@+id/guideline2"
-            app:srcCompat="@drawable/ic_account"
-            app:tint="?colorOnPrimary" />
+            app:layout_constraintStart_toEndOf="@+id/guideline2" />
 
-        <ImageView
+        <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            style="@style/Widget.AnimatedProfile"
+            app:profileName="@string/new_profile"
             android:tag="Profile3"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile3"
@@ -79,13 +68,12 @@
             android:layout_height="90dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
-            android:scaleType="fitXY"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4"
-            app:srcCompat="@drawable/ic_account"
-            app:tint="?colorOnPrimary" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
-        <ImageView
+        <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            style="@style/Widget.AnimatedProfile"
+            app:profileName="@string/new_profile"
             android:tag="Profile4"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile4"
@@ -93,11 +81,8 @@
             android:layout_height="90dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:scaleType="fitXY"
             app:layout_constraintStart_toEndOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4"
-            app:srcCompat="@drawable/ic_account"
-            app:tint="?colorOnPrimary" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -114,6 +99,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            style="@style/Widget.AnimatedProfile"
             android:id="@+id/animatedProfile2"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -121,18 +107,8 @@
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:profileBorderColor="#6E6E6E"
-            app:profileBorderWidth="8"
             app:profileCounter="2"
-            app:profileCounterColor="#9E3232"
-            app:profileCounterStrokeColor="#F37A7A"
-            app:profileCounterStrokeWidth="1.2"
-            app:profileCounterTextColor="#ffffff"
-            app:profileEndColor="#44090909"
-            app:profileCenterColor="#FB2C2C"
-            app:profileStartColor="#000000"
             app:profileName="Kenniston"
-            app:profileNameColor="#ffffff"
             app:profilePlaceholder="@drawable/kenniston" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
