@@ -11,7 +11,9 @@ import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentForgotPasswordBinding
 import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ForgotPasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentForgotPasswordBinding

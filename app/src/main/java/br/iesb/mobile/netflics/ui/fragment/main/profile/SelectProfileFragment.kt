@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
 import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SelectProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentSelectProfileBinding

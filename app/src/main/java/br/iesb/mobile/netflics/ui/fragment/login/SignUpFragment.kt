@@ -11,7 +11,9 @@ import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentSignupBinding
 import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.viewmodel.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding

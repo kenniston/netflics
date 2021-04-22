@@ -32,7 +32,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            app:profileBorderColor="#6E6E6E"
+            app:profileBorderWidth="8"
+            app:profileCounter="2"
+            app:profileCounterColor="#9E3232"
+            app:profileCounterStrokeColor="#F37A7A"
+            app:profileCounterStrokeWidth="1.2"
+            app:profileCounterTextColor="#ffffff"
+            app:profileEndColor="#44090909"
+            app:profileCenterColor="#FB2C2C"
+            app:profileStartColor="#000000"
+            app:profileName="Kenniston"
+            app:profileNameColor="#ffffff"
+            app:profilePlaceholder="@drawable/kenniston"
             android:tag="Profile1"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile1"
@@ -42,9 +55,7 @@
             android:layout_marginBottom="32dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:srcCompat="@drawable/ic_account"
-            app:tint="?colorOnPrimary" />
+            app:layout_constraintEnd_toStartOf="@+id/guideline2" />
 
         <ImageView
             android:tag="Profile2"

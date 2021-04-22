@@ -15,7 +15,7 @@ class ProfileRepository @Inject constructor(
         val data = hashMapOf(
             "name" to p.name
         )
-        firestore.collection("profile").document(p.id)
+        firestore.collection("profile").document(p.id!!)
             .set(data)
             .addOnCompleteListener { op ->
                 val res = if (op.isSuccessful) {
