@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
+import br.iesb.mobile.netflics.ui.component.AnimatedProfile
 import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,9 +48,9 @@ class SelectProfileFragment : Fragment() {
 
         alert.setPositiveButton("Continuar") { dialog, _ ->
             val name = edittext.text.toString()
-            viewmodel.profile.value?.id = profileId
-            viewmodel.profile.value?.name = name
-            viewmodel.createOrUpdateProfile()
+            //viewmodel.profile.value?.id = profileId
+            //viewmodel.profile.value?.name = name
+            viewmodel.createOrUpdateProfile(0)
             dialog.dismiss()
         }
 
@@ -58,6 +59,11 @@ class SelectProfileFragment : Fragment() {
         }
 
         alert.show()
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun animation(v: View) {
+        (v as AnimatedProfile).profileAnimatedCounter = !v.profileAnimatedCounter
     }
 
 }

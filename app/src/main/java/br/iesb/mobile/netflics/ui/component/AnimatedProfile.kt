@@ -1,5 +1,6 @@
 package br.iesb.mobile.netflics.ui.component
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
@@ -9,6 +10,7 @@ import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.toBitmap
 import br.iesb.mobile.netflics.R
@@ -43,10 +45,28 @@ class AnimatedProfile @JvmOverloads constructor(
     var profileBorderColor: Int = Color.TRANSPARENT
     var profileBorderWidth: Int = 0
 
+    var profileAnimatedCounter: Boolean = false
+        set(value) {
+            field = value
+            if (value) {
+                if (counterAnimator.isRunning) {
+                    counterAnimator.resume()
+                } else {
+                    counterAnimator.start()
+                }
+            } else {
+                counterAnimator.pause()
+            }
+        }
+    private var counterRotation: Int = 0
+    private val counterAnimator = ValueAnimator.ofInt(0, 360)
+
     private var p: Paint = Paint()
     private val gradientDrawable: GradientDrawable = GradientDrawable()
 
     init {
+        configureCounterAnimation()
+
         context.withStyledAttributes(attrs, R.styleable.AnimatedProfile) {
             // Profile Name Attributes
             profileName = getString(R.styleable.AnimatedProfile_profileName)
@@ -71,6 +91,7 @@ class AnimatedProfile @JvmOverloads constructor(
                 Color.WHITE)
             profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth,
                 1.2f)
+            profileAnimatedCounter = getBoolean(R.styleable.AnimatedProfile_profileAnimatedCounter, false)
 
             // Profile Gradient Attributes
             profileStartColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
@@ -112,9 +133,13 @@ class AnimatedProfile @JvmOverloads constructor(
     private fun drawCounter(canvas: Canvas) {
         if (profileCounter == 0) return
 
+        canvas.save()
+
         // Counter background position
         val x = width - COUNTER_RADIUS * 1.8f
         val y = 0 + COUNTER_RADIUS * 1.8f
+
+        canvas.rotate(counterRotation.toFloat(), x, y)
 
         // Counter text position
         val yt = y + COUNTER_RADIUS.div(2)
@@ -137,6 +162,8 @@ class AnimatedProfile @JvmOverloads constructor(
         // Draw counter text
         val str = if (profileCounter < 100) profileCounter.toString() else "\uD83D\uDE31"
         canvas.drawText(str, x, yt, p)
+
+        canvas.restore()
     }
 
     private fun drawProfileImage(canvas: Canvas) {
@@ -185,6 +212,17 @@ class AnimatedProfile @JvmOverloads constructor(
     fun setProfileImage(bmp: Bitmap) {
         profileImage = BitmapDrawable(resources, bmp)
         postInvalidate()
+    }
+
+    private fun configureCounterAnimation() {
+        counterAnimator.duration = 3000
+        counterAnimator.repeatCount = -1
+        counterAnimator.repeatMode = ValueAnimator.REVERSE
+        counterAnimator.addUpdateListener {
+            counterRotation = it.animatedValue as Int
+            invalidate()
+        }
+        counterAnimator.interpolator = AccelerateDecelerateInterpolator()
     }
 
 }

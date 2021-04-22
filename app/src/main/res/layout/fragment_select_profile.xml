@@ -107,9 +107,11 @@
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:profileCounter="2"
+            app:profileCounter="99"
             app:profileName="Kenniston"
-            app:profilePlaceholder="@drawable/kenniston" />
+            app:profileAnimatedCounter="true"
+            app:profilePlaceholder="@drawable/kenniston"
+            android:onClick="@{fragment::animation}"/>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 

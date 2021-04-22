@@ -21,6 +21,7 @@
         <attr name="profileImage" format="reference" />
         <attr name="profilePlaceholder" format="reference" />
         <attr name="profileCounter" format="integer" />
+        <attr name="profileAnimatedCounter" format="boolean" />
         <attr name="profileCounterColor" format="color" />
         <attr name="profileCounterStrokeColor" format="color" />
         <attr name="profileCounterStrokeWidth" format="float" />
