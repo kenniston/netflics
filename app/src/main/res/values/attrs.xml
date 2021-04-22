@@ -10,4 +10,21 @@
     <attr format="reference" name="titleStyle"/>
     <attr format="reference" name="editTextLayoutStyle"/>
     <attr format="reference" name="layoutEditTextStyle"/>
+
+    <declare-styleable name="AnimatedProfile">
+        <attr name="profileName" format="string" />
+        <attr name="profileNameColor" format="color" />
+        <attr name="profileImage" format="reference" />
+        <attr name="profilePlaceholder" format="reference" />
+        <attr name="profileCounter" format="integer" />
+        <attr name="profileCounterColor" format="color" />
+        <attr name="profileCounterStrokeColor" format="color" />
+        <attr name="profileCounterStrokeWidth" format="float" />
+        <attr name="profileCounterTextColor" format="color" />
+        <attr name="profileStartColor" format="color" />
+        <attr name="profileCenterColor" format="color" />
+        <attr name="profileEndColor" format="color" />
+        <attr name="profileBorderColor" format="color" />
+        <attr name="profileBorderWidth" format="integer" />
+    </declare-styleable>
 </resources>

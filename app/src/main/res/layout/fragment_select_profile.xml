@@ -102,6 +102,27 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
 
+        <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            android:id="@+id/animatedProfile2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:profileBorderColor="#6E6E6E"
+            app:profileBorderWidth="8"
+            app:profileCounter="2"
+            app:profileCounterColor="#9E3232"
+            app:profileCounterStrokeColor="#F37A7A"
+            app:profileCounterStrokeWidth="1.2"
+            app:profileCounterTextColor="#ffffff"
+            app:profileEndColor="#44FF0000"
+            app:profileCenterColor="#303030"
+            app:profileStartColor="#000000"
+            app:profileName="Teste"
+            app:profilePlaceholder="@drawable/ic_google_icon" />
+
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>
