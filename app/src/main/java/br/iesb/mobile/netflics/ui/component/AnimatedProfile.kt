@@ -120,6 +120,13 @@ class AnimatedProfile @JvmOverloads constructor(
         drawName(canvas)
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        setMeasuredDimension(
+            IMAGE_MARGIN.coerceAtLeast(widthMeasureSpec),
+            IMAGE_MARGIN.coerceAtLeast(heightMeasureSpec)
+        )
+    }
+
     private fun drawGradientBackground(canvas: Canvas) {
         gradientDrawable.orientation = GradientDrawable.Orientation.TOP_BOTTOM
         gradientDrawable.gradientType = GradientDrawable.LINEAR_GRADIENT
