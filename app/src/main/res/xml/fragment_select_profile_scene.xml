@@ -9,48 +9,7 @@
         motion:duration="2000"
         motion:autoTransition="animateToEnd"
         motion:motionInterpolator="easeOut">
-        <KeyFrameSet >
-            <KeyPosition
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="10"
-                motion:keyPositionType="parentRelative"
-                motion:percentY="0.5"/>
-            <KeyPosition
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="60"
-                motion:keyPositionType="parentRelative"
-                motion:percentY="0.5" />
-
-            <KeyAttribute
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="11"
-                android:rotation="0" />
-            <KeyAttribute
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="60"
-                android:rotation="360" />
-            <KeyAttribute
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="100"
-                android:rotation="360" />
-
-            <KeyAttribute
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="85"
-                android:scaleX="1.2"
-                android:scaleY="1.2"/>
-            <KeyAttribute
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="60"
-                android:scaleX="1.0"
-                android:scaleY="1.0"/>
-            <KeyPosition
-                motion:motionTarget="@+id/tvSelectProfileTitle"
-                motion:framePosition="17"
-                motion:keyPositionType="pathRelative"
-                motion:percentY="0.5" />
-
-        </KeyFrameSet>
+        <KeyFrameSet />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -66,8 +25,8 @@
         <Constraint
             android:id="@+id/ivProfile1"
             motion:layout_constraintEnd_toStartOf="@+id/guideline2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginBottom="32dp"
             motion:layout_constraintBottom_toTopOf="@+id/guideline4"
             android:layout_marginEnd="32dp"
@@ -75,8 +34,8 @@
         <Constraint
             android:id="@+id/ivProfile2"
             motion:layout_constraintStart_toEndOf="@+id/guideline2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginBottom="32dp"
             motion:layout_constraintBottom_toTopOf="@+id/guideline4"
             android:layout_marginStart="32dp"
@@ -84,8 +43,8 @@
         <Constraint
             android:id="@+id/ivProfile3"
             motion:layout_constraintEnd_toStartOf="@+id/guideline2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginEnd="32dp"
             motion:layout_constraintTop_toBottomOf="@+id/guideline4"
             android:layout_marginTop="32dp"
@@ -93,8 +52,8 @@
         <Constraint
             android:id="@+id/ivProfile4"
             motion:layout_constraintStart_toEndOf="@+id/guideline2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             motion:layout_constraintTop_toBottomOf="@+id/guideline4"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"

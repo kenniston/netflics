@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
+import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.ui.component.AnimatedProfile
 import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,16 +31,21 @@ class SelectProfileFragment : Fragment() {
         binding.fragment = this
         binding.viewmodel = viewmodel
 
+        loadProfiles()
+
         return binding.root
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun createOrSelectProfile(v: View) {
-        val tag = v.tag as String
-        showProfileDialog(tag)
+    private fun loadProfiles() {
+        viewmodel.result.observe(viewLifecycleOwner) {
+            if (it is AppResult.Error) {
+                Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+            }
+        }
+        viewmodel.loadProfiles()
     }
 
-    private fun showProfileDialog(profileId: String) {
+    private fun showProfileDialog(index: Int) {
         val alert = AlertDialog.Builder(context)
         val edittext = EditText(context)
 
@@ -48,9 +55,9 @@ class SelectProfileFragment : Fragment() {
 
         alert.setPositiveButton("Continuar") { dialog, _ ->
             val name = edittext.text.toString()
-            //viewmodel.profile.value?.id = profileId
-            //viewmodel.profile.value?.name = name
-            viewmodel.createOrUpdateProfile(0)
+            viewmodel.currentProfile?.value?.id = "Profile$index"
+            viewmodel.currentProfile?.value?.name = name
+            viewmodel.createOrUpdateProfile()
             dialog.dismiss()
         }
 
@@ -59,6 +66,17 @@ class SelectProfileFragment : Fragment() {
         }
 
         alert.show()
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun createOrSelectProfile(v: View) {
+        val tag = v.tag as Int
+        viewmodel.selectProfile(tag)
+        viewmodel.currentProfile?.value?.let {
+            if (it.id == "new") {
+                showProfileDialog(tag)
+            }
+        }
     }
 
     @Suppress("UNUSED_PARAMETER")

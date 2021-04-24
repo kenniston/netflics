@@ -49,5 +49,6 @@
     <!-- Profile and Select Profile -->
     <string name="who_is_watching">Quem está assistindo?</string>
     <string name="new_profile">Novo</string>
+    <string name="error_loading_profiles">Não foi possível carregar os perfis da conta.</string>
 
 </resources>

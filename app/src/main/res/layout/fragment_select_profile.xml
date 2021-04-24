@@ -34,8 +34,8 @@
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
-            app:profileName="@string/new_profile"
-            android:tag="Profile1"
+            app:profileName="@{viewmodel.profile1.name}"
+            android:tag="1"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile1"
             android:layout_width="120dp"
@@ -47,8 +47,8 @@
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
-            app:profileName="@string/new_profile"
-            android:tag="Profile2"
+            app:profileName="@{viewmodel.profile2.name}"
+            android:tag="2"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile2"
             android:layout_width="120dp"
@@ -60,8 +60,8 @@
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
-            app:profileName="@string/new_profile"
-            android:tag="Profile3"
+            app:profileName="@{viewmodel.profile3.name}"
+            android:tag="3"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile3"
             android:layout_width="120dp"
@@ -73,8 +73,8 @@
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
-            app:profileName="@string/new_profile"
-            android:tag="Profile4"
+            app:profileName="@{viewmodel.profile4.name}"
+            android:tag="4"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile4"
             android:layout_width="120dp"
@@ -99,6 +99,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
+            android:visibility="gone"
             style="@style/Widget.AnimatedProfile"
             android:id="@+id/animatedProfile2"
             android:layout_width="120dp"

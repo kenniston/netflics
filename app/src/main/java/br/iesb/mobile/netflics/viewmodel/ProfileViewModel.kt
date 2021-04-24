@@ -18,24 +18,49 @@ class ProfileViewModel @Inject constructor(
     private val interactor: ProfileInteractor
 ) : AndroidViewModel(app) {
 
-    val currentProfile = MutableLiveData<Profile>()
+    var currentProfile: MutableLiveData<Profile>? = null
 
-    val profile1 = MutableLiveData(Profile("profile1", app.getString(R.string.new_profile)))
-    val profile2 = MutableLiveData(Profile("profile2", app.getString(R.string.new_profile)))
-    val profile3 = MutableLiveData(Profile("profile3", app.getString(R.string.new_profile)))
-    val profile4 = MutableLiveData(Profile("profile4", app.getString(R.string.new_profile)))
+    val profile1 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
+    val profile2 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
+    val profile3 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
+    val profile4 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
 
     val result = MutableLiveData<AppResult<Nothing>>()
 
-    fun createOrUpdateProfile(profileIndex: Int) {
-        currentProfile.value = when (profileIndex) {
-            1 -> profile1.value
-            2 -> profile2.value
-            3 -> profile3.value
-            else -> profile4.value
-        }
+    fun loadProfiles() {
         viewModelScope.launch {
-            result.value = interactor.createOrUpdateProfile(currentProfile.value!!)
+            val data = interactor.loadProfiles()
+            result.value = when (data) {
+                is AppResult.Success -> {
+                    data.value?.forEach {
+                        when (it.id) {
+                            "Profile1" -> profile1.value = Profile(it.id, it.name)
+                            "Profile2" -> profile2.value = Profile(it.id, it.name)
+                            "Profile3" -> profile3.value = Profile(it.id, it.name)
+                            else -> profile4.value = Profile(it.id, it.name)
+                        }
+                    }
+                    AppResult.Success()
+                }
+                is AppResult.Error -> data
+            }
+        }
+    }
+
+    fun selectProfile(index: Int) {
+        currentProfile = when (index) {
+            1 -> profile1
+            2 -> profile2
+            3 -> profile3
+            else -> profile4
+        }
+    }
+
+    fun createOrUpdateProfile() {
+        currentProfile?.let {
+            viewModelScope.launch {
+                result.value = interactor.createOrUpdateProfile(it.value!!)
+            }
         }
     }
 
