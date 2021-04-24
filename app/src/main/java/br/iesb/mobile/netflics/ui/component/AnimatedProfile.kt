@@ -21,7 +21,8 @@ class AnimatedProfile @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private val COUNTER_RADIUS: Float = 27f
-    private val IMAGE_MARGIN: Int = 50
+    private val IMAGE_MARGIN_PERCENT: Float = 0.3f
+    private val MINIMUM_SIZE: Int = 10
 
     var profileName: String? = null
     var profileNameColor: Int = Color.BLACK
@@ -121,9 +122,12 @@ class AnimatedProfile @JvmOverloads constructor(
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val desiredWidth = MeasureSpec.getSize(widthMeasureSpec)
+        val desiredHeight = MeasureSpec.getSize(heightMeasureSpec)
+
         setMeasuredDimension(
-            IMAGE_MARGIN.coerceAtLeast(widthMeasureSpec),
-            IMAGE_MARGIN.coerceAtLeast(heightMeasureSpec)
+            MINIMUM_SIZE.coerceAtLeast(desiredWidth),
+            MINIMUM_SIZE.coerceAtLeast(desiredHeight)
         )
     }
 
@@ -175,9 +179,13 @@ class AnimatedProfile @JvmOverloads constructor(
 
     private fun drawProfileImage(canvas: Canvas) {
         val img = (if (profileImage != null) profileImage else profilePlaceholder) ?: return
-        val b = img.toBitmap(width - IMAGE_MARGIN * 2, height - IMAGE_MARGIN * 2)
+        val x = (width * (IMAGE_MARGIN_PERCENT / 2))
+        val y = (height * (IMAGE_MARGIN_PERCENT / 3f))
+        val w = (width - (width * IMAGE_MARGIN_PERCENT)).coerceAtLeast(1f)
+        val h = height - (height * IMAGE_MARGIN_PERCENT).coerceAtLeast(1f)
+        val b = img.toBitmap(w.toInt(), h.toInt())
 
-        canvas.drawBitmap(b, IMAGE_MARGIN.toFloat(), IMAGE_MARGIN.div(2).toFloat(), Paint())
+        canvas.drawBitmap(b, x, y, Paint())
     }
 
     private fun drawName(canvas: Canvas) {
@@ -193,18 +201,21 @@ class AnimatedProfile @JvmOverloads constructor(
 
         val str = TextUtils.ellipsize(profileName, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
 
+        val textHeight = textPaint.descent() - textPaint.ascent()
+        val textYOffset = (textHeight / 2) - textPaint.descent()
+
         val x = width.div(2)
-        val y = height - IMAGE_MARGIN.div(2)
+        val y = height - (height * (IMAGE_MARGIN_PERCENT / 2.7f)) + textYOffset
 
         if (profileNameStroke) {
             textPaint.color = profileNameStrokeColor
             textPaint.style = Paint.Style.STROKE
-            canvas.drawText(str, 0, str.length, x.toFloat(), y.toFloat(), textPaint)
+            canvas.drawText(str, 0, str.length, x.toFloat(), y, textPaint)
         }
 
         textPaint.color = profileNameColor
         textPaint.style = Paint.Style.FILL
-        canvas.drawText(str, 0, str.length, x.toFloat(), y.toFloat(), textPaint)
+        canvas.drawText(str, 0, str.length, x.toFloat(), y, textPaint)
     }
 
     private fun setTextSizeForWidth(paint: Paint, desiredWidth: Float, text: String) {

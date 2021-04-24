@@ -109,8 +109,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:profileCounter="99"
             app:profileName="Kenniston"
+            app:profileNameStroke="true"
+            app:profileNameStrokeColor="#000000"
             app:profileAnimatedCounter="true"
-            app:profilePlaceholder="@drawable/kenniston"
+            app:profileImage="@drawable/kenniston"
             android:onClick="@{fragment::animation}"/>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

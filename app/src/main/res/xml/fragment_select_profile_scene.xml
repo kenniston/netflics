@@ -66,8 +66,8 @@
         <Constraint
             android:id="@+id/ivProfile1"
             motion:layout_constraintEnd_toStartOf="@+id/guideline2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginBottom="32dp"
             motion:layout_constraintBottom_toTopOf="@+id/guideline4"
             android:layout_marginEnd="32dp"
