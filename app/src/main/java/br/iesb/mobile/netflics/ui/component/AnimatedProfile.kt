@@ -2,6 +2,7 @@ package br.iesb.mobile.netflics.ui.component
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.content.ContextWrapper
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -9,22 +10,25 @@ import android.graphics.drawable.GradientDrawable
 import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.toBitmap
 import br.iesb.mobile.netflics.R
+import java.lang.reflect.InvocationTargetException
+import java.lang.reflect.Method
 
 
 class AnimatedProfile @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
 ) : View(context, attrs, defStyleAttr) {
 
     private val COUNTER_RADIUS: Float = 27f
     private val IMAGE_MARGIN_PERCENT: Float = 0.3f
     private val MINIMUM_SIZE: Int = 10
 
-    var profileName: String? = null
+    var profileName: String? = ""
     var profileNameColor: Int = Color.BLACK
     var profileNameStroke: Boolean = false
     var profileNameStrokeColor: Int = Color.WHITE
@@ -32,6 +36,11 @@ class AnimatedProfile @JvmOverloads constructor(
 
     var profileImage: Drawable? = null
     var profilePlaceholder: Drawable? = null
+
+    var profileEditIcon: Drawable? = null
+    var profileEditIconTint: Int = Color.WHITE
+    var profileShowEditIcon: Boolean =  false
+    var profileOnEditClick: String? = null
 
     var profileCounter: Int = 0
     var profileCounterColor : Int = Color.GRAY
@@ -65,46 +74,55 @@ class AnimatedProfile @JvmOverloads constructor(
     private var p: Paint = Paint()
     private val gradientDrawable: GradientDrawable = GradientDrawable()
 
+    private var editResolvedMethod: Method? = null
+    private var editResolvedContext: Context? = null
+
     init {
         configureCounterAnimation()
 
         context.withStyledAttributes(attrs, R.styleable.AnimatedProfile) {
             // Profile Name Attributes
-            profileName = getString(R.styleable.AnimatedProfile_profileName)
+            profileName = getString(R.styleable.AnimatedProfile_profileName) ?: ""
             profileNameColor = getColor(R.styleable.AnimatedProfile_profileNameColor,
-                Color.BLACK)
+                    Color.BLACK)
             profileNameStroke = getBoolean(R.styleable.AnimatedProfile_profileNameStroke, false)
             profileNameStrokeColor = getColor(R.styleable.AnimatedProfile_profileNameStrokeColor,
-                Color.WHITE)
+                    Color.WHITE)
             profileNameTextSize = getFloat(R.styleable.AnimatedProfile_profileNameTextSize, 42f)
 
             // Image and Placeholder Attributes
             profileImage = getDrawable(R.styleable.AnimatedProfile_profileImage)
             profilePlaceholder = getDrawable(R.styleable.AnimatedProfile_profilePlaceholder)
 
+            // Edit Icon
+            profileEditIcon = getDrawable(R.styleable.AnimatedProfile_profileEditIcon)
+            profileEditIconTint = getInt(R.styleable.AnimatedProfile_profileEditIconTint, Color.WHITE)
+            profileShowEditIcon = getBoolean(R.styleable.AnimatedProfile_profileShowEditIcon, false)
+            profileOnEditClick = getString(R.styleable.AnimatedProfile_profileOnEditClick)
+
             // Counter Attributes
             profileCounter = getInt(R.styleable.AnimatedProfile_profileCounter, 0)
             profileCounterColor = getColor(R.styleable.AnimatedProfile_profileCounterColor,
-                Color.GRAY)
+                    Color.GRAY)
             profileCounterStrokeColor = getColor(R.styleable.AnimatedProfile_profileCounterStrokeColor,
-                Color.DKGRAY)
+                    Color.DKGRAY)
             profileCounterTextColor = getColor(R.styleable.AnimatedProfile_profileCounterTextColor,
-                Color.WHITE)
+                    Color.WHITE)
             profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth,
-                1.2f)
+                    1.2f)
             profileAnimatedCounter = getBoolean(R.styleable.AnimatedProfile_profileAnimatedCounter, false)
 
             // Profile Gradient Attributes
             profileStartColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
-                Color.TRANSPARENT)
+                    Color.TRANSPARENT)
             profileCenterColor = getColor(R.styleable.AnimatedProfile_profileCenterColor,
-                Color.TRANSPARENT)
+                    Color.TRANSPARENT)
             profileEndColor = getColor(R.styleable.AnimatedProfile_profileEndColor,
-                Color.TRANSPARENT)
+                    Color.TRANSPARENT)
 
             // Profile Border
             profileBorderColor = getColor(R.styleable.AnimatedProfile_profileBorderColor,
-                Color.TRANSPARENT)
+                    Color.TRANSPARENT)
             profileBorderWidth = getInt(R.styleable.AnimatedProfile_profileBorderWidth, 0)
         }
         p.isAntiAlias = true
@@ -119,6 +137,7 @@ class AnimatedProfile @JvmOverloads constructor(
         drawProfileImage(canvas)
         drawCounter(canvas)
         drawName(canvas)
+        drawEditIcon(canvas)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -126,8 +145,8 @@ class AnimatedProfile @JvmOverloads constructor(
         val desiredHeight = MeasureSpec.getSize(heightMeasureSpec)
 
         setMeasuredDimension(
-            MINIMUM_SIZE.coerceAtLeast(desiredWidth),
-            MINIMUM_SIZE.coerceAtLeast(desiredHeight)
+                MINIMUM_SIZE.coerceAtLeast(desiredWidth),
+                MINIMUM_SIZE.coerceAtLeast(desiredHeight)
         )
     }
 
@@ -216,6 +235,79 @@ class AnimatedProfile @JvmOverloads constructor(
         textPaint.color = profileNameColor
         textPaint.style = Paint.Style.FILL
         canvas.drawText(str, 0, str.length, x.toFloat(), y, textPaint)
+    }
+
+
+
+    private fun drawEditIcon(canvas: Canvas) {
+        if (!profileShowEditIcon) return
+        val img = profileEditIcon ?: return
+
+        val x = 15f
+        val y = 18f
+
+        img.colorFilter = PorterDuffColorFilter(profileEditIconTint, PorterDuff.Mode.SRC_IN)
+        val b = img.toBitmap(2 * COUNTER_RADIUS.toInt(), 2 * COUNTER_RADIUS.toInt())
+
+        canvas.drawBitmap(b, x, y, p)
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_UP) {
+            if (event.x > 15 &&
+                event.x < (15 + 2 * COUNTER_RADIUS.toInt()) &&
+                event.y > 18 &&
+                event.y < (18 + 2 * COUNTER_RADIUS.toInt())
+            ) {
+                println("ON EDIT AREA")
+                performOnEditClick()
+            } else {
+                performClick()
+            }
+        }
+        return true
+    }
+
+    override fun performClick(): Boolean {
+        return super.performClick()
+    }
+
+    private fun performOnEditClick() {
+        if (editResolvedMethod == null) {
+            resolveEditMethod()
+        }
+        try {
+            editResolvedMethod!!.invoke(editResolvedContext, this)
+        } catch (e: IllegalAccessException) {
+            throw IllegalStateException("Could not execute non-public method for onEditClick", e)
+        } catch (e: InvocationTargetException) {
+            throw IllegalStateException("Could not execute method for onEditClick", e)
+        }
+    }
+
+    private fun resolveEditMethod() {
+        val methodName = profileOnEditClick ?: return
+        var ctx = this.context
+        while (ctx != null) {
+            try {
+                if (!ctx.isRestricted) {
+                    val method = context?.javaClass?.getMethod(methodName, View::class.java)
+                    if (method != null) {
+                        editResolvedMethod = method
+                        editResolvedContext = context
+                        return
+                    }
+                }
+            } catch (e: NoSuchMethodException) {
+                // Failed to find method, keep searching up the hierarchy.
+            }
+            ctx = if (context is ContextWrapper) (context as ContextWrapper).baseContext else null
+        }
+        val id = this.id
+        val idText = if (id == NO_ID) "" else " with id '${this.context.resources.getResourceEntryName(id)}'"
+        throw IllegalStateException("Could not find method " + methodName
+                + "(View) in a parent or ancestor Context for onEditClick "
+                + "attribute defined on view " + this.javaClass + idText)
     }
 
     private fun setTextSizeForWidth(paint: Paint, desiredWidth: Float, text: String) {

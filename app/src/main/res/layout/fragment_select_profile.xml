@@ -99,7 +99,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
-            android:visibility="gone"
+            android:visibility="visible"
             style="@style/Widget.AnimatedProfile"
             android:id="@+id/animatedProfile2"
             android:layout_width="120dp"
@@ -114,6 +114,8 @@
             app:profileNameStrokeColor="#000000"
             app:profileAnimatedCounter="true"
             app:profileImage="@drawable/kenniston"
+            app:profileEditIcon="@drawable/ic_edit"
+            app:profileShowEditIcon="true"
             android:onClick="@{fragment::animation}"/>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

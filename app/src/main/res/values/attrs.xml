@@ -20,6 +20,10 @@
         <attr name="profileNameStrokeColor" format="color" />
         <attr name="profileImage" format="reference" />
         <attr name="profilePlaceholder" format="reference" />
+        <attr name="profileEditIcon" format="reference" />
+        <attr name="profileEditIconTint" format="color" />
+        <attr name="profileShowEditIcon" format="boolean" />
+        <attr name="profileOnEditClick" format="string" />
         <attr name="profileCounter" format="integer" />
         <attr name="profileAnimatedCounter" format="boolean" />
         <attr name="profileCounterColor" format="color" />
