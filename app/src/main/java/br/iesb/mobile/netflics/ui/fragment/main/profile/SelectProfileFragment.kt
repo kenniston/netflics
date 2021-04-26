@@ -31,6 +31,8 @@ class SelectProfileFragment : Fragment() {
         binding.fragment = this
         binding.viewmodel = viewmodel
 
+        binding.animatedProfile2.setOnEditClickListener { edit(it) }
+
         loadProfiles()
 
         return binding.root
@@ -82,6 +84,10 @@ class SelectProfileFragment : Fragment() {
     @Suppress("UNUSED_PARAMETER")
     fun animation(v: View) {
         (v as AnimatedProfile).profileAnimatedCounter = !v.profileAnimatedCounter
+    }
+
+    private fun edit(name: String) {
+        println("EDIT: $name")
     }
 
 }

@@ -109,7 +109,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:profileCounter="99"
-            app:profileName="Kenniston"
+            app:profileName="@{viewmodel.currentProfile.name}"
             app:profileNameStroke="true"
             app:profileNameStrokeColor="#000000"
             app:profileAnimatedCounter="true"

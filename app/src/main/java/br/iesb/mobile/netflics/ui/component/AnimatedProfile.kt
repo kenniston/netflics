@@ -2,7 +2,6 @@ package br.iesb.mobile.netflics.ui.component
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.content.ContextWrapper
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
@@ -16,7 +15,6 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.toBitmap
 import br.iesb.mobile.netflics.R
-import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 
 
@@ -74,8 +72,7 @@ class AnimatedProfile @JvmOverloads constructor(
     private var p: Paint = Paint()
     private val gradientDrawable: GradientDrawable = GradientDrawable()
 
-    private var editResolvedMethod: Method? = null
-    private var editResolvedContext: Context? = null
+    private var onEditClickListener: OnEditClickListener? = null
 
     init {
         configureCounterAnimation()
@@ -218,7 +215,8 @@ class AnimatedProfile @JvmOverloads constructor(
         textPaint.strokeJoin = Paint.Join.ROUND
         textPaint.textSize = profileNameTextSize
 
-        val str = TextUtils.ellipsize(profileName, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
+        val txt = profileName ?: ""
+        val str = TextUtils.ellipsize(txt, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
 
         val textHeight = textPaint.descent() - textPaint.ascent()
         val textYOffset = (textHeight / 2) - textPaint.descent()
@@ -236,8 +234,6 @@ class AnimatedProfile @JvmOverloads constructor(
         textPaint.style = Paint.Style.FILL
         canvas.drawText(str, 0, str.length, x.toFloat(), y, textPaint)
     }
-
-
 
     private fun drawEditIcon(canvas: Canvas) {
         if (!profileShowEditIcon) return
@@ -259,8 +255,7 @@ class AnimatedProfile @JvmOverloads constructor(
                 event.y > 18 &&
                 event.y < (18 + 2 * COUNTER_RADIUS.toInt())
             ) {
-                println("ON EDIT AREA")
-                performOnEditClick()
+                onEditClickListener?.onClick(profileName ?: "")
             } else {
                 performClick()
             }
@@ -272,56 +267,13 @@ class AnimatedProfile @JvmOverloads constructor(
         return super.performClick()
     }
 
-    private fun performOnEditClick() {
-        if (editResolvedMethod == null) {
-            resolveEditMethod()
-        }
-        try {
-            editResolvedMethod!!.invoke(editResolvedContext, this)
-        } catch (e: IllegalAccessException) {
-            throw IllegalStateException("Could not execute non-public method for onEditClick", e)
-        } catch (e: InvocationTargetException) {
-            throw IllegalStateException("Could not execute method for onEditClick", e)
-        }
-    }
-
-    private fun resolveEditMethod() {
-        val methodName = profileOnEditClick ?: return
-        var ctx = this.context
-        while (ctx != null) {
-            try {
-                if (!ctx.isRestricted) {
-                    val method = context?.javaClass?.getMethod(methodName, View::class.java)
-                    if (method != null) {
-                        editResolvedMethod = method
-                        editResolvedContext = context
-                        return
-                    }
-                }
-            } catch (e: NoSuchMethodException) {
-                // Failed to find method, keep searching up the hierarchy.
-            }
-            ctx = if (context is ContextWrapper) (context as ContextWrapper).baseContext else null
-        }
-        val id = this.id
-        val idText = if (id == NO_ID) "" else " with id '${this.context.resources.getResourceEntryName(id)}'"
-        throw IllegalStateException("Could not find method " + methodName
-                + "(View) in a parent or ancestor Context for onEditClick "
-                + "attribute defined on view " + this.javaClass + idText)
-    }
-
-    private fun setTextSizeForWidth(paint: Paint, desiredWidth: Float, text: String) {
-        val testTextSize = 96f
-        paint.textSize = testTextSize
-        val bounds = Rect()
-        paint.getTextBounds(text, 0, text.length, bounds)
-        val desiredTextSize = testTextSize * desiredWidth / bounds.width()
-        paint.textSize = desiredTextSize
-    }
-
     fun setProfileImage(bmp: Bitmap) {
         profileImage = BitmapDrawable(resources, bmp)
         postInvalidate()
+    }
+
+    fun setOnEditClickListener(listener: OnEditClickListener) {
+        onEditClickListener = listener
     }
 
     private fun configureCounterAnimation() {
@@ -333,6 +285,18 @@ class AnimatedProfile @JvmOverloads constructor(
             invalidate()
         }
         counterAnimator.interpolator = AccelerateDecelerateInterpolator()
+    }
+
+    /**
+     * Interface definition for a callback to be invoked when the edit icon is clicked.
+     */
+    fun interface OnEditClickListener {
+        /**
+         * Called when the edit icon has been clicked.
+         *
+         * @param name The profile name that was clicked.
+         */
+        fun onClick(name: String)
     }
 
 }
