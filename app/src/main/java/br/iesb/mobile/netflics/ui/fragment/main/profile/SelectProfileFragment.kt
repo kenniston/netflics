@@ -47,7 +47,7 @@ class SelectProfileFragment : Fragment() {
         viewmodel.loadProfiles()
     }
 
-    private fun showProfileDialog(index: Int) {
+    private fun showProfileDialog(index: Int, control: AnimatedProfile) {
         val alert = AlertDialog.Builder(context)
         val edittext = EditText(context)
 
@@ -72,11 +72,11 @@ class SelectProfileFragment : Fragment() {
 
     @Suppress("UNUSED_PARAMETER")
     fun createOrSelectProfile(v: View) {
-        val tag = v.tag as Int
+        val tag = (v.tag as String).toInt()
         viewmodel.selectProfile(tag)
         viewmodel.currentProfile?.value?.let {
             if (it.id == "new") {
-                showProfileDialog(tag)
+                showProfileDialog(tag, v as AnimatedProfile)
             }
         }
     }

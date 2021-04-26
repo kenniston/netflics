@@ -57,9 +57,15 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun createOrUpdateProfile() {
-        currentProfile?.let {
+        currentProfile?.value?.let {
             viewModelScope.launch {
-                result.value = interactor.createOrUpdateProfile(it.value!!)
+                when (it.id) {
+                    "Profile1" -> profile1.value = Profile(it.id, it.name)
+                    "Profile2" -> profile2.value = Profile(it.id, it.name)
+                    "Profile3" -> profile3.value = Profile(it.id, it.name)
+                    else -> profile4.value = Profile(it.id, it.name)
+                }
+                result.value = interactor.createOrUpdateProfile(it)
             }
         }
     }

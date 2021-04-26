@@ -14,6 +14,7 @@ class ProfileRepository @Inject constructor(
 
     suspend fun createOrUpdateProfile(p: Profile): AppResult<Nothing> = suspendCoroutine { nextStep ->
         val data = hashMapOf(
+            "id" to p.id,
             "name" to p.name
         )
         firestore.collection("profile").document(p.id!!)

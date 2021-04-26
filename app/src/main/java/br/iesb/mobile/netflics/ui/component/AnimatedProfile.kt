@@ -27,13 +27,27 @@ class AnimatedProfile @JvmOverloads constructor(
     private val MINIMUM_SIZE: Int = 10
 
     var profileName: String? = ""
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var profileNameColor: Int = Color.BLACK
     var profileNameStroke: Boolean = false
     var profileNameStrokeColor: Int = Color.WHITE
     var profileNameTextSize: Float = 42f
 
     var profileImage: Drawable? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var profilePlaceholder: Drawable? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var profileEditIcon: Drawable? = null
     var profileEditIconTint: Int = Color.WHITE
@@ -41,6 +55,11 @@ class AnimatedProfile @JvmOverloads constructor(
     var profileOnEditClick: String? = null
 
     var profileCounter: Int = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var profileCounterColor : Int = Color.GRAY
     var profileCounterStrokeColor: Int = Color.DKGRAY
     var profileCounterTextColor: Int = Color.WHITE
