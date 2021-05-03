@@ -12,6 +12,9 @@ import br.iesb.mobile.netflics.ui.adapter.OnboardingAdapter
 import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingFirstScreenFragment
 import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingSecondScreenFragment
 import br.iesb.mobile.netflics.ui.fragment.onboarding.screen.OnboardingThirdScreenFragment
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 class OnboardingFragment : Fragment() {
 

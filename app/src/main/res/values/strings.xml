@@ -3,8 +3,12 @@
     <string name="email_hint">E-mail</string>
     <string name="back">Voltar</string>
     <string name="send">enviar</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
     <string name="password_hint">Senha</string>
     <string name="password_check_hint">Repetir a Senha</string>
+    <string name="loading">Processando. <br/> Por favor aguarde...</string>
+    <string name="network_connection_lost">Conexão com a internet indisponível. Verifique sua conexão.</string>
 
     <!-- Onboarding -->
     <string name="start_button">Vamos lá</string>
@@ -49,6 +53,9 @@
     <!-- Profile and Select Profile -->
     <string name="who_is_watching">Quem está assistindo?</string>
     <string name="new_profile">Novo</string>
+    <string name="profile">Perfil</string>
     <string name="error_loading_profiles">Não foi possível carregar os perfis da conta.</string>
+
+
 
 </resources>

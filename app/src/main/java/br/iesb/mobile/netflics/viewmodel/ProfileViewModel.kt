@@ -20,12 +20,12 @@ class ProfileViewModel @Inject constructor(
 
     var currentProfile: MutableLiveData<Profile>? = null
 
-    val profile1 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
-    val profile2 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
-    val profile3 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
-    val profile4 = MutableLiveData(Profile("new", app.getString(R.string.new_profile)))
+    val profile1 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
+    val profile2 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
+    val profile3 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
+    val profile4 = MutableLiveData(Profile(name = app.getString(R.string.new_profile)))
 
-    val result = MutableLiveData<AppResult<Nothing>>()
+    val result = MutableLiveData<AppResult<Nothing>?>()
 
     fun loadProfiles() {
         viewModelScope.launch {

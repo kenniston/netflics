@@ -15,11 +15,10 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.drawable.toBitmap
 import br.iesb.mobile.netflics.R
-import java.lang.reflect.Method
 
 
 class AnimatedProfile @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0,
 ) : View(context, attrs, defStyleAttr) {
 
     private val COUNTER_RADIUS: Float = 27f
@@ -50,9 +49,17 @@ class AnimatedProfile @JvmOverloads constructor(
         }
 
     var profileEditIcon: Drawable? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     var profileEditIconTint: Int = Color.WHITE
     var profileShowEditIcon: Boolean =  false
-    var profileOnEditClick: String? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var profileCounter: Int = 0
         set(value) {
@@ -99,11 +106,15 @@ class AnimatedProfile @JvmOverloads constructor(
         context.withStyledAttributes(attrs, R.styleable.AnimatedProfile) {
             // Profile Name Attributes
             profileName = getString(R.styleable.AnimatedProfile_profileName) ?: ""
-            profileNameColor = getColor(R.styleable.AnimatedProfile_profileNameColor,
-                    Color.BLACK)
+            profileNameColor = getColor(
+                R.styleable.AnimatedProfile_profileNameColor,
+                Color.BLACK
+            )
             profileNameStroke = getBoolean(R.styleable.AnimatedProfile_profileNameStroke, false)
-            profileNameStrokeColor = getColor(R.styleable.AnimatedProfile_profileNameStrokeColor,
-                    Color.WHITE)
+            profileNameStrokeColor = getColor(
+                R.styleable.AnimatedProfile_profileNameStrokeColor,
+                Color.WHITE
+            )
             profileNameTextSize = getFloat(R.styleable.AnimatedProfile_profileNameTextSize, 42f)
 
             // Image and Placeholder Attributes
@@ -112,33 +123,54 @@ class AnimatedProfile @JvmOverloads constructor(
 
             // Edit Icon
             profileEditIcon = getDrawable(R.styleable.AnimatedProfile_profileEditIcon)
-            profileEditIconTint = getInt(R.styleable.AnimatedProfile_profileEditIconTint, Color.WHITE)
+            profileEditIconTint = getInt(
+                R.styleable.AnimatedProfile_profileEditIconTint,
+                Color.WHITE
+            )
             profileShowEditIcon = getBoolean(R.styleable.AnimatedProfile_profileShowEditIcon, false)
-            profileOnEditClick = getString(R.styleable.AnimatedProfile_profileOnEditClick)
 
             // Counter Attributes
             profileCounter = getInt(R.styleable.AnimatedProfile_profileCounter, 0)
-            profileCounterColor = getColor(R.styleable.AnimatedProfile_profileCounterColor,
-                    Color.GRAY)
-            profileCounterStrokeColor = getColor(R.styleable.AnimatedProfile_profileCounterStrokeColor,
-                    Color.DKGRAY)
-            profileCounterTextColor = getColor(R.styleable.AnimatedProfile_profileCounterTextColor,
-                    Color.WHITE)
-            profileCounterStrokeWidth = getFloat(R.styleable.AnimatedProfile_profileCounterStrokeWidth,
-                    1.2f)
-            profileAnimatedCounter = getBoolean(R.styleable.AnimatedProfile_profileAnimatedCounter, false)
+            profileCounterColor = getColor(
+                R.styleable.AnimatedProfile_profileCounterColor,
+                Color.GRAY
+            )
+            profileCounterStrokeColor = getColor(
+                R.styleable.AnimatedProfile_profileCounterStrokeColor,
+                Color.DKGRAY
+            )
+            profileCounterTextColor = getColor(
+                R.styleable.AnimatedProfile_profileCounterTextColor,
+                Color.WHITE
+            )
+            profileCounterStrokeWidth = getFloat(
+                R.styleable.AnimatedProfile_profileCounterStrokeWidth,
+                1.2f
+            )
+            profileAnimatedCounter = getBoolean(
+                R.styleable.AnimatedProfile_profileAnimatedCounter,
+                false
+            )
 
             // Profile Gradient Attributes
-            profileStartColor = getColor(R.styleable.AnimatedProfile_profileStartColor,
-                    Color.TRANSPARENT)
-            profileCenterColor = getColor(R.styleable.AnimatedProfile_profileCenterColor,
-                    Color.TRANSPARENT)
-            profileEndColor = getColor(R.styleable.AnimatedProfile_profileEndColor,
-                    Color.TRANSPARENT)
+            profileStartColor = getColor(
+                R.styleable.AnimatedProfile_profileStartColor,
+                Color.TRANSPARENT
+            )
+            profileCenterColor = getColor(
+                R.styleable.AnimatedProfile_profileCenterColor,
+                Color.TRANSPARENT
+            )
+            profileEndColor = getColor(
+                R.styleable.AnimatedProfile_profileEndColor,
+                Color.TRANSPARENT
+            )
 
             // Profile Border
-            profileBorderColor = getColor(R.styleable.AnimatedProfile_profileBorderColor,
-                    Color.TRANSPARENT)
+            profileBorderColor = getColor(
+                R.styleable.AnimatedProfile_profileBorderColor,
+                Color.TRANSPARENT
+            )
             profileBorderWidth = getInt(R.styleable.AnimatedProfile_profileBorderWidth, 0)
         }
         p.isAntiAlias = true
@@ -161,8 +193,8 @@ class AnimatedProfile @JvmOverloads constructor(
         val desiredHeight = MeasureSpec.getSize(heightMeasureSpec)
 
         setMeasuredDimension(
-                MINIMUM_SIZE.coerceAtLeast(desiredWidth),
-                MINIMUM_SIZE.coerceAtLeast(desiredHeight)
+            MINIMUM_SIZE.coerceAtLeast(desiredWidth),
+            MINIMUM_SIZE.coerceAtLeast(desiredHeight)
         )
     }
 
@@ -235,7 +267,12 @@ class AnimatedProfile @JvmOverloads constructor(
         textPaint.textSize = profileNameTextSize
 
         val txt = profileName ?: ""
-        val str = TextUtils.ellipsize(txt, textPaint, width.toFloat().div(1.2f), TextUtils.TruncateAt.END)
+        val str = TextUtils.ellipsize(
+            txt,
+            textPaint,
+            width.toFloat().div(1.2f),
+            TextUtils.TruncateAt.END
+        )
 
         val textHeight = textPaint.descent() - textPaint.ascent()
         val textYOffset = (textHeight / 2) - textPaint.descent()
@@ -270,11 +307,12 @@ class AnimatedProfile @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_UP) {
             if (event.x > 15 &&
-                event.x < (15 + 2 * COUNTER_RADIUS.toInt()) &&
+                event.x < (15 + 3 * COUNTER_RADIUS.toInt()) &&
                 event.y > 18 &&
-                event.y < (18 + 2 * COUNTER_RADIUS.toInt())
+                event.y < (18 + 3 * COUNTER_RADIUS.toInt()) &&
+                profileShowEditIcon
             ) {
-                onEditClickListener?.onClick(profileName ?: "")
+                onEditClickListener?.onClick(this)
             } else {
                 performClick()
             }
@@ -315,7 +353,7 @@ class AnimatedProfile @JvmOverloads constructor(
          *
          * @param name The profile name that was clicked.
          */
-        fun onClick(name: String)
+        fun onClick(v: AnimatedProfile)
     }
 
 }

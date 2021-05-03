@@ -14,7 +14,7 @@
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/profileMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/backgroundColor"
@@ -35,6 +35,7 @@
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
             app:profileName="@{viewmodel.profile1.name}"
+            app:profileShowEditIcon="@{viewmodel.profile1.id != null ? true : false}"
             android:tag="1"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile1"
@@ -48,6 +49,7 @@
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
             app:profileName="@{viewmodel.profile2.name}"
+            app:profileShowEditIcon="@{viewmodel.profile2.id != null ? true : false}"
             android:tag="2"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile2"
@@ -61,6 +63,7 @@
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
             app:profileName="@{viewmodel.profile3.name}"
+            app:profileShowEditIcon="@{viewmodel.profile3.id != null ? true : false}"
             android:tag="3"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile3"
@@ -74,6 +77,7 @@
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
             style="@style/Widget.AnimatedProfile"
             app:profileName="@{viewmodel.profile4.name}"
+            app:profileShowEditIcon="@{viewmodel.profile4.id != null ? true : false}"
             android:tag="4"
             android:onClick="@{ fragment::createOrSelectProfile }"
             android:id="@+id/ivProfile4"
@@ -99,7 +103,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
-            android:visibility="visible"
+            android:visibility="gone"
             style="@style/Widget.AnimatedProfile"
             android:id="@+id/animatedProfile2"
             android:layout_width="120dp"
@@ -110,8 +114,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:profileCounter="99"
             app:profileName="@{viewmodel.currentProfile.name}"
-            app:profileNameStroke="true"
-            app:profileNameStrokeColor="#000000"
             app:profileAnimatedCounter="true"
             app:profileImage="@drawable/kenniston"
             app:profileEditIcon="@drawable/ic_edit"

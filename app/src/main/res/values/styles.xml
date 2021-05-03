@@ -47,6 +47,8 @@
         <item name="profileEndColor">?attr/colorPrimaryVariant</item>
         <item name="profilePlaceholder">@drawable/ic_account</item>
         <item name="profileNameTextSize">32</item>
+        <item name="profileEditIcon">@drawable/ic_edit</item>
+        <item name="profileEditIconTint">?attr/colorSecondary</item>
     </style>
 
     <style name="Widget.EditTextLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">

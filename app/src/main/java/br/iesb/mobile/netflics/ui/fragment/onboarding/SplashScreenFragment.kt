@@ -8,14 +8,21 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentSplashscreenBinding
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentSplashscreenBinding
+
+    @Inject
+    lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +33,14 @@ class SplashScreenFragment : Fragment() {
         binding.lifecycleOwner = this
 
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(2500)
-            findNavController().navigate(R.id.action_splashScreenFragment_to_onboardingFragment)
+            delay(1000)
+
+            if (auth.currentUser != null) {
+                requireActivity().finish()
+                findNavController().navigate(R.id.action_splashScreenFragment_to_mainActivity)
+            } else {
+                findNavController().navigate(R.id.action_splashScreenFragment_to_onboardingFragment)
+            }
         }
 
         return binding.root

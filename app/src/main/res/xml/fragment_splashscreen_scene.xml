@@ -17,7 +17,7 @@
     </ConstraintSet>
 
     <Transition
-        app:duration="2000"
+        app:duration="1000"
         app:constraintSetEnd="@id/end"
         app:constraintSetStart="@+id/start"
         app:autoTransition="animateToEnd"
