@@ -33,7 +33,7 @@ class SplashScreenFragment : Fragment() {
         binding.lifecycleOwner = this
 
         GlobalScope.launch(context = Dispatchers.Main) {
-            delay(1000)
+            delay(1600)
 
             if (auth.currentUser != null) {
                 requireActivity().finish()
