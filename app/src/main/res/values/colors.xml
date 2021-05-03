@@ -7,6 +7,7 @@
     <color name="brand_light_red">#FF4C25</color>
     <color name="brand_white">#FFFFFFFF</color>
     <color name="brand_black">#FF000000</color>
+    <color name="brand_dark_gray_3">#252728</color>
     <color name="brand_dark_gray_2">#2D2F31</color>
     <color name="brand_dark_gray_1">#333333</color>
     <color name="brand_dark_gray">#FF454545</color>

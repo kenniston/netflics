@@ -21,7 +21,8 @@ class OnboardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentOnboardingBinding.inflate(inflater, container, false)

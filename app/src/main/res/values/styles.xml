@@ -34,6 +34,11 @@
         <item name="dotsSpacing">4dp</item>
     </style>
 
+    <style name="Widget.BottomNavigation" parent="android:Widget">
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+    </style>
+
     <style name="Widget.AnimatedProfile" parent="android:Widget">
         <item name="profileBorderColor">?attr/colorPrimary</item>
         <item name="profileBorderWidth">8</item>

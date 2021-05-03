@@ -9,6 +9,25 @@
         android:id="@+id/selectProfileFragment"
         android:name="br.iesb.mobile.netflics.ui.fragment.main.profile.SelectProfileFragment"
         android:label="fragment_select_profile"
-        tools:layout="@layout/fragment_select_profile" />
+        tools:layout="@layout/fragment_select_profile" >
+        <action
+            android:id="@+id/action_selectProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/comingSoonFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.main.navigation.ComingSoonFragment"
+        android:label="ComingSoonFragment"
+        tools:layout="@layout/fragment_coming_soon"/>
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.main.navigation.DownloadFragment"
+        android:label="DownloadFragment"
+        tools:layout="@layout/fragment_download"/>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.iesb.mobile.netflics.ui.fragment.main.navigation.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
 
 </navigation>

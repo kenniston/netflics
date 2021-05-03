@@ -65,6 +65,16 @@
             app:layout_constraintTop_toBottomOf="@+id/networkLayout"
             app:navGraph="@navigation/main" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bvMainBar"
+            style="?bottomNavigationStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/navigation"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:visibility="gone"
             android:id="@+id/loadingLayout"

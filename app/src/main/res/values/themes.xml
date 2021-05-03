@@ -66,7 +66,7 @@
         <!--
             Background color é usada em componentes que rolagem como a ScrollView e Listas.
         -->
-        <item name="backgroundColor">@color/brand_dark_gray_2</item>
+        <item name="backgroundColor">@color/brand_dark_gray_3</item>
         <item name="colorOnBackground">@color/brand_white</item>
 
         <!-- Status bar color. -->
@@ -91,7 +91,7 @@
         <item name="editTextLayoutStyle">@style/Widget.EditTextLayout</item>
         <item name="layoutEditTextStyle">@style/Widget.EditText</item>
         <item name="profileStyle">@style/Widget.AnimatedProfile</item>
-
+        <item name="bottomNavigationStyle">@style/Widget.BottomNavigation</item>
     </style>
 
 </resources>

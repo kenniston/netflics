@@ -7,7 +7,7 @@
     <string name="cancel">Cancelar</string>
     <string name="password_hint">Senha</string>
     <string name="password_check_hint">Repetir a Senha</string>
-    <string name="loading">Processando. <br/> Por favor aguarde...</string>
+    <string name="loading">Processando. <br /> Por favor aguarde...</string>
     <string name="network_connection_lost">Conexão com a internet indisponível. Verifique sua conexão.</string>
 
     <!-- Onboarding -->
@@ -56,6 +56,11 @@
     <string name="profile">Perfil</string>
     <string name="error_loading_profiles">Não foi possível carregar os perfis da conta.</string>
 
-
+    <!-- Home -->
+    <string name="home">Início</string>
+    <string name="coming_soon">Em breve</string>
+    <string name="downloads">Downloads</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

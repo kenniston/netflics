@@ -11,6 +11,7 @@
     <attr format="reference" name="editTextLayoutStyle"/>
     <attr format="reference" name="layoutEditTextStyle"/>
     <attr format="reference" name="profileStyle"/>
+    <attr format="reference" name="bottomNavigationStyle"/>
 
     <declare-styleable name="AnimatedProfile">
         <attr name="profileName" format="string" />
