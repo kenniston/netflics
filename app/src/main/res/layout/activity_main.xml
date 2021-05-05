@@ -59,10 +59,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bvMainBar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/networkLayout"
+            app:layout_constraintVertical_bias="0.0"
             app:navGraph="@navigation/main" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -73,7 +75,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/navigation"/>
+            app:menu="@menu/navigation" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:visibility="gone"

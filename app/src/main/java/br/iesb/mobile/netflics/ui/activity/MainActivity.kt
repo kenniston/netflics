@@ -1,9 +1,9 @@
 package br.iesb.mobile.netflics.ui.activity
 
-import android.animation.ValueAnimator
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), NetFlicsActivity, NetFlicsMainActivity
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         networkMonitor.observe(this) { connected ->
-            binding.networkLayout.visibility =  if (!connected) View.VISIBLE else View.GONE
+            binding.networkLayout.visibility = if (!connected) View.VISIBLE else View.GONE
         }
 
         val navigationController = Navigation.findNavController(this, R.id.mainNavigationFragment)
@@ -44,11 +44,13 @@ class MainActivity : AppCompatActivity(), NetFlicsActivity, NetFlicsMainActivity
     }
 
     override fun showBottomNavigation() {
-        TODO("Not yet implemented")
+        binding.bvMainBar.animate().setInterpolator(AccelerateDecelerateInterpolator())
+            .translationY(0f)
     }
 
     override fun hideBottomNavigation() {
-        TODO("Not yet implemented")
+        binding.bvMainBar.animate().setInterpolator(AccelerateDecelerateInterpolator())
+            .translationY(150f)
     }
 
 }

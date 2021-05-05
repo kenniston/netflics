@@ -16,6 +16,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
 import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.ui.activity.NetFlicsActivity
+import br.iesb.mobile.netflics.ui.activity.NetFlicsMainActivity
 import br.iesb.mobile.netflics.ui.component.AnimatedProfile
 import br.iesb.mobile.netflics.viewmodel.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +54,16 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
     fun onCreated() {
         activity?.lifecycle?.removeObserver(this)
         loadProfiles()
+    }
+
+    override fun onStart() {
+        (activity as? NetFlicsMainActivity)?.hideBottomNavigation()
+        super.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as? NetFlicsMainActivity)?.showBottomNavigation()
     }
 
     private fun loadProfiles() {
@@ -105,6 +116,8 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
     @Suppress("UNUSED_PARAMETER")
     fun animation(v: View) {
         (v as AnimatedProfile).profileAnimatedCounter = !v.profileAnimatedCounter
+        val ac = (activity as? NetFlicsMainActivity) ?: return
+        if (v.profileAnimatedCounter) ac.showBottomNavigation() else ac.hideBottomNavigation()
     }
 
     private fun edit(v: AnimatedProfile) {
