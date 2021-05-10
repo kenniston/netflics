@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import androidx.navigation.fragment.findNavController
+import br.iesb.mobile.netflics.R
 import br.iesb.mobile.netflics.databinding.FragmentSelectProfileBinding
 import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.ui.activity.NetFlicsActivity
@@ -25,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SelectProfileFragment : Fragment(), LifecycleObserver {
 
     private lateinit var binding: FragmentSelectProfileBinding
-    private val viewmodel: ProfileViewModel by viewModels()
+    private val viewmodel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +52,7 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
         activity?.lifecycle?.addObserver(this)
     }
 
+    @Suppress("UNUSED")
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreated() {
         activity?.lifecycle?.removeObserver(this)
@@ -57,8 +60,8 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
     }
 
     override fun onStart() {
-        (activity as? NetFlicsMainActivity)?.hideBottomNavigation()
         super.onStart()
+        (activity as? NetFlicsMainActivity)?.hideBottomNavigation()
     }
 
     override fun onStop() {
@@ -79,7 +82,7 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
         viewmodel.loadProfiles()
     }
 
-    private fun showProfileDialog(index: Int, control: AnimatedProfile) {
+    private fun showProfileDialog(index: Int) {
         val alert = AlertDialog.Builder(context)
         val edittext = EditText(context)
 
@@ -108,7 +111,11 @@ class SelectProfileFragment : Fragment(), LifecycleObserver {
         viewmodel.selectProfile(tag)
         viewmodel.currentProfile?.value?.let {
             if (it.id == null) {
-                showProfileDialog(tag, v as AnimatedProfile)
+                showProfileDialog(tag)
+            } else {
+                val ac = (activity as? NetFlicsMainActivity) ?: return
+                ac.showBottomNavigation()
+                findNavController().navigate(R.id.action_selectProfileFragment_to_homeFragment)
             }
         }
     }

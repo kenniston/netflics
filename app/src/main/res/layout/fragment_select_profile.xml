@@ -103,7 +103,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <br.iesb.mobile.netflics.ui.component.AnimatedProfile
-            android:visibility="visible"
+            android:visibility="gone"
             style="@style/Widget.AnimatedProfile"
             android:id="@+id/animatedProfile2"
             android:layout_width="120dp"

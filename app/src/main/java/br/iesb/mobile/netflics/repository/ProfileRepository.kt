@@ -4,6 +4,8 @@ import br.iesb.mobile.netflics.domain.AppResult
 import br.iesb.mobile.netflics.domain.Profile
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
